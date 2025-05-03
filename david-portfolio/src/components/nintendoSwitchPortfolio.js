@@ -204,15 +204,11 @@ const NintendoSwitchPortfolio = () => {
   const renderUserProfile = () => (
     <div className="user-profile">
       <div className="avatar-container">
-        <img
-          src="/api/placeholder/200/200"
-          alt="David Diaz"
-          className="avatar"
-        />
+        <img src="/DavidDC.jpg" alt="David Diaz" className="avatar" />
       </div>
       <div className="user-info">
         <h1 className="user-name">David Diaz Clifton</h1>
-        <p className="user-title">Full Stack Developer</p>
+        <h3 className="user-title">Full Stack Developer</h3>
       </div>
     </div>
   );
@@ -600,8 +596,8 @@ const styles = `
   }
 
   .avatar-container {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid white;
