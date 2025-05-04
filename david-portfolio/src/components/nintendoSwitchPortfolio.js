@@ -16,7 +16,7 @@ const NintendoSwitchPortfolio = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [batteryLevel, setBatteryLevel] = useState(87);
+  const [batteryLevel, setBatteryLevel] = useState(1);
 
   // Time updater
   useEffect(() => {
@@ -575,7 +575,7 @@ const styles = `
     left: 1px;
     top: 1px;
     height: 8px;
-    background-color: #4CD964;
+    background-color:rgb(255, 0, 0);
     border-radius: 1px;
   }
 
