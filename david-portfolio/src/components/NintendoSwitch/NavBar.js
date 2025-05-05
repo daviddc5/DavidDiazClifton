@@ -196,16 +196,6 @@ const NavBar = ({
           </button>
         )}
       </div>
-
-      {/* Right placeholder for balance */}
-      <div className="nav-placeholder">
-        {isMobile && (
-          <div className="controls">
-            <span className="control-btn">A</span>
-            <span className="control-text">Select</span>
-          </div>
-        )}
-      </div>
     </div>
   );
 };
