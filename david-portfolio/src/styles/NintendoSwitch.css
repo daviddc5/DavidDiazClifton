@@ -789,3 +789,209 @@ body {
     padding: 16px;
   }
 }
+
+/* Updated styles for centered navigation in NavBar */
+
+/* Main navbar container */
+.nav-bar {
+  background-color: var(--switch-nav);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 50;
+  min-height: 60px;
+}
+
+/* Center container for navigation */
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+/* Navigation container with home button in middle */
+.navbar-navigation-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  max-width: 80vw; /* Limit width to prevent overflow */
+  padding: 0 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.navbar-navigation-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Split navigation into two halves */
+.navbar-navigation-half {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Home button styling */
+.home-button {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  margin: 0 4px;
+  z-index: 10;
+}
+
+.home-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.home-button:active {
+  transform: scale(0.95);
+}
+
+/* Placeholders for balance */
+.nav-placeholder {
+  width: 80px; /* Fixed width for balance */
+  display: flex;
+  align-items: center;
+}
+
+/* Section indicator */
+.section-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.indicator-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Navigation buttons */
+.navbar-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 16px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+
+.navbar-nav-button:hover,
+.navbar-nav-button.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.navbar-nav-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-navigation-container {
+    max-width: 70vw;
+    gap: 8px;
+  }
+
+  .navbar-nav-text {
+    display: none; /* Hide text on smaller screens */
+  }
+
+  .navbar-nav-button {
+    padding: 4px;
+  }
+
+  .home-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-placeholder {
+    width: 40px;
+  }
+
+  .section-indicator span {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-navigation-container {
+    max-width: 60vw;
+    gap: 6px;
+  }
+
+  .home-button {
+    width: 32px;
+    height: 32px;
+    margin: 0 2px;
+  }
+
+  .navbar-nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .section-indicator span {
+    display: none; /* Hide section name on very small screens */
+  }
+
+  .nav-placeholder {
+    width: 30px;
+  }
+
+  .navbar-navigation-half {
+    gap: 4px;
+  }
+}
