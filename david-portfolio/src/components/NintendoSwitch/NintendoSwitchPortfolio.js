@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StatusBar from "./StatusBar";
 import UserProfile from "./UserProfile";
 import SectionGrid from "./SectionGrid";
@@ -16,9 +16,28 @@ const NintendoSwitchPortfolio = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [isPressing, setIsPressing] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Get ordered sections array for navigation
   const orderedSections = portfolioData.sections;
+
+  // Check for mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add listener for resize
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   const handleSectionClick = (section) => {
     setIsPressing(true);
@@ -40,6 +59,7 @@ const NintendoSwitchPortfolio = () => {
     const section = orderedSections.find((s) => s.id === sectionId);
     if (section) {
       setSelectedSection(section);
+      setIsMenuOpen(false);
     }
   };
 
@@ -66,6 +86,8 @@ const NintendoSwitchPortfolio = () => {
   return (
     <div
       className={`nintendo-switch-portfolio ${isPressing ? "pressing" : ""}`}
+      role="application"
+      aria-label="Nintendo Switch-styled portfolio"
     >
       <StatusBar />
 
@@ -105,6 +127,7 @@ const NintendoSwitchPortfolio = () => {
         selectedSection={selectedSection}
         portfolioData={portfolioData}
         onNavigate={handleNavigation}
+        isMobile={isMobile}
       />
     </div>
   );
