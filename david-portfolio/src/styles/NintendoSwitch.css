@@ -627,9 +627,149 @@ body {
   font-size: 12px;
   margin-right: 10px;
 }
-/* Add these styles to your NintendoSwitch.css file to fix the education cards spacing */
+/* Add these styles to your NintendoSwitch.css file for the Projects Section */
 
-/* Education Section */
+/* Projects Section */
+.projects-section {
+  width: 100%;
+}
+
+/* Projects Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Project Card */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  height: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden; /* Keep image contained */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Project Image Container */
+.project-image-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0; /* Round top corners only */
+  margin-bottom: 0; /* Remove margin as it's inside card */
+  margin: -24px -24px 16px -24px; /* Extend image to edge of card */
+}
+
+/* Project Image */
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* Project Content */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0; /* No additional padding needed inside card */
+}
+
+/* Project Title */
+.project-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--switch-dark);
+  margin-bottom: 10px;
+}
+
+/* Project Description */
+.project-description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 16px;
+  flex: 1; /* Take up available space */
+  line-height: 1.5;
+}
+
+/* Project Tech Tags */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tech-tag {
+  background-color: rgba(30, 170, 241, 0.1);
+  color: var(--switch-blue);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* Project Links */
+.project-links {
+  display: flex;
+  gap: 16px;
+  margin-top: auto; /* Push to bottom of card */
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--switch-blue);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  padding: 5px 0;
+}
+
+.project-link:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+/* Animation delay for cards */
+.project-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.project-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.project-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.project-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.project-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.project-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Education Section - Fix the spacing issue */
 .education-section {
   width: 100%;
 }
@@ -657,31 +797,54 @@ body {
   margin-bottom: 16px;
 }
 
-/* Fix any specificity issues with animation delays */
-.education-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.education-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.education-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.education-card:nth-child(4) {
-  animation-delay: 0.4s;
+/* Responsive adjustments for projects grid */
+@media (max-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
 
-/* Fix card hover effect if desired */
-.education-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  transition: box-shadow 0.3s ease;
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .project-image-container {
+    height: 160px;
+  }
 }
 
-/* Ensure consistent bottom margin on education cards */
-.education-card:last-child {
-  margin-bottom: 0; /* Prevent extra space after the last card */
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .project-image-container {
+    height: 200px;
+  }
+
+  .project-title {
+    font-size: 18px;
+  }
 }
 
+/* Fix for dark mode if needed */
+@media (prefers-color-scheme: dark) {
+  .tech-tag {
+    background-color: rgba(30, 170, 241, 0.2);
+  }
+
+  .project-links {
+    border-top: 1px solid rgba(240, 240, 240, 0.1);
+  }
+}
 /* Animations */
 @keyframes slideIn {
   from {
