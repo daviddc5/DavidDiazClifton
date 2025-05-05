@@ -139,13 +139,12 @@ const skills = {
 const projects = {
   projects: [
     {
-      title: "Nintendo Switch Portfolio",
+      title: "Productivity App",
       description:
-        "Interactive portfolio website designed to mimic the Nintendo Switch interface, built with React and modern CSS.",
+        "App designed to reduce digital distractions by tracking app usage and scheduling tasks, developed for my dissertation project.",
       image: "/api/placeholder/400/200",
-      tech: ["React", "CSS", "JavaScript"],
-      github: "https://github.com/VindicoDavid/nintendo-switch-portfolio",
-      live: "https://daviddiazclifton.com",
+      tech: ["React Native", "Node.js", "MongoDB"],
+      github: "https://github.com/VindicoDavid/productivity-app",
     },
     {
       title: "Drone Radar Simulator",
@@ -163,14 +162,6 @@ const projects = {
       tech: ["React", "Tailwind CSS", "Firebase"],
       github: "https://github.com/VindicoDavid/eventify",
       live: "https://eventify-demo.netlify.app",
-    },
-    {
-      title: "Productivity App",
-      description:
-        "App designed to reduce digital distractions by tracking app usage and scheduling tasks, developed for my dissertation project.",
-      image: "/api/placeholder/400/200",
-      tech: ["React Native", "Node.js", "MongoDB"],
-      github: "https://github.com/VindicoDavid/productivity-app",
     },
   ],
 };
