@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import SectionHeader from "../../shared/SectionHeader";
+import Card from "../../shared/Card";
 
 const ProjectsSection = ({ data }) => {
   return (
@@ -9,12 +10,18 @@ const ProjectsSection = ({ data }) => {
 
       <div className="projects-grid">
         {data.projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="project-image"
-            />
+          <Card
+            key={index}
+            className="project-card"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className="project-image-container">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="project-image"
+              />
+            </div>
             <div className="project-content">
               <h3 className="project-title">{project.title}</h3>
               <p className="project-description">{project.description}</p>
@@ -53,7 +60,7 @@ const ProjectsSection = ({ data }) => {
                 )}
               </div>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>

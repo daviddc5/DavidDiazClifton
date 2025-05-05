@@ -20,7 +20,6 @@ const EducationSection = ({ data }) => {
             </div>
             <p className="school-degree">{school.degree}</p>
             {school.grade && <p className="school-grade">{school.grade}</p>}
-
             {school.details && (
               <ul className="school-details">
                 {school.details.map((detail, idx) => (
