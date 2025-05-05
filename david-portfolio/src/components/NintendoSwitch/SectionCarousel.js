@@ -4,8 +4,20 @@ const SectionCarousel = ({ sections, onSectionClick }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [totalPages, setTotalPages] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   const carouselTrackRef = useRef(null);
   const carouselWrapperRef = useRef(null);
+
+  // Check if we should use grid layout for mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Calculate items per page based on screen width and container width
   useEffect(() => {
@@ -62,6 +74,26 @@ const SectionCarousel = ({ sections, onSectionClick }) => {
     setCurrentPage(index);
   };
 
+  // Render vertical layout for mobile (one by one)
+  if (isMobile) {
+    return (
+      <div className="section-vertical-grid">
+        {sections.map((section) => (
+          <div
+            key={section.id}
+            className="section-vertical-tile"
+            style={{ backgroundColor: section.color }}
+            onClick={() => onSectionClick(section)}
+          >
+            <div className="tile-icon">{section.icon}</div>
+            <div className="tile-title">{section.title}</div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Render carousel for larger screens
   return (
     <div className="section-carousel">
       <div className="carousel-container">

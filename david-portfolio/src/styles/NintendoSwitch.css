@@ -20,12 +20,14 @@ body {
   background-color: #1a1a1a;
   color: var(--switch-text);
   line-height: 1.6;
+  overflow: hidden; /* Prevent body scrolling */
 }
 
+/* Make overall container a fixed height viewport */
 .nintendo-switch-portfolio {
   width: 100%;
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh; /* Fixed height instead of min-height */
   display: flex;
   flex-direction: column;
   background-color: var(--switch-bg);
@@ -33,7 +35,7 @@ body {
   overflow: hidden;
 }
 
-/* Status Bar */
+/* Status Bar - Fixed height */
 .status-bar {
   background-color: var(--switch-dark);
   color: white;
@@ -42,6 +44,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .status-icons {
@@ -85,45 +88,32 @@ body {
   border-radius: 1px;
 }
 
-/* Console Content */
+/* Console Content - Flex but no scroll */
 .console-content {
   flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+  padding: 20px 20px 0;
   background-color: var(--switch-bg);
-  /* Center all content horizontally */
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden; /* Hide overflow, no scrolling here */
+  position: relative;
 }
 
-/* User Profile - Centered on page */
+/* User Profile - Fixed at top */
 .user-profile {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 50px;
-  /* Width constraint to keep it centered */
+  margin-bottom: 20px;
   width: 100%;
   max-width: 800px;
   justify-content: center;
-  margin-top: 15vh;
+  padding-top: 5vh;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 /* Avatar Hover Effect */
-.avatar-container {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  flex-shrink: 0;
-}
-
 .avatar-container {
   width: 120px;
   height: 120px;
@@ -136,15 +126,6 @@ body {
   position: relative;
   flex-shrink: 0;
   margin-top: 20px; /* Add gap at the top */
-}
-
-/* Also update the mobile version */
-@media (max-width: 480px) {
-  .avatar-container {
-    width: 80px;
-    height: 80px;
-    margin-top: 15px; /* Slightly smaller gap for mobile */
-  }
 }
 
 .avatar-container:hover {
@@ -181,6 +162,37 @@ body {
   color: #555;
   font-weight: 500;
 }
+
+/* Scrollable Section Container - Only this will scroll */
+.sections-container {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto; /* Enable scrolling here */
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Custom scrollbar for better aesthetics */
+.sections-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sections-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.sections-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.sections-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
 /* Section Carousel - Fixed layout */
 .section-carousel {
   width: 100%;
@@ -252,14 +264,6 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* .carousel-arrow.left {
-  left: -10px;
-}
-
-.carousel-arrow.right {
-  right: -10px;
-} */
-
 .carousel-arrow.left {
   left: -50px; /* Moved further to the left from -10px */
 }
@@ -322,7 +326,52 @@ body {
   }
 }
 
-/* Legacy Section Grid - Keep for fallback */
+/* Vertical Section Grid for Mobile */
+.section-vertical-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 0;
+}
+
+.section-vertical-tile {
+  height: 80px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-vertical-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.section-vertical-tile .tile-icon {
+  margin-bottom: 0;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.section-vertical-tile .tile-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Legacy Section Grid */
 .section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -366,73 +415,24 @@ body {
   font-weight: 500;
 }
 
-/* Nav Bar */
-.nav-bar {
-  background-color: var(--switch-nav);
-  color: white;
-  padding: 12px 16px;
+/* Section View - Also scrollable */
+.section-view {
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+  padding: 20px 0;
 }
 
-.home-button {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-}
-
-.home-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.section-indicator {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-}
-
-.indicator-color {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.control-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #555;
-  font-weight: 700;
-  font-size: 12px;
-}
-
-.control-text {
-  font-size: 12px;
-  margin-right: 10px;
-}
-
-/* Section Content Styles */
+/* Section content will be scrollable inside the section view */
 .section-content {
   padding: 20px;
   color: var(--switch-dark);
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
 .section-header {
@@ -451,15 +451,6 @@ body {
   width: 40px;
   height: 4px;
   background-color: currentColor;
-}
-
-/* Section View */
-.section-view {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
 }
 
 /* Card Component */
@@ -612,6 +603,7 @@ body {
   margin-top: 30px;
   width: 100%;
   max-width: 800px;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .switch-nav-button {
@@ -645,6 +637,67 @@ body {
   font-weight: 500;
 }
 
+/* Nav Bar - Fixed at bottom */
+.nav-bar {
+  background-color: var(--switch-nav);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.home-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.home-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.section-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.indicator-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #555;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.control-text {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
 /* Animations */
 @keyframes slideIn {
   from {
@@ -659,13 +712,12 @@ body {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .carousel-container {
-    padding: 0 30px;
+  .user-profile {
+    padding-top: 3vh;
   }
 
-  .carousel-item {
-    flex: 0 0 140px;
-    height: 140px;
+  .carousel-container {
+    padding: 0 30px;
   }
 
   .section-grid {
@@ -693,12 +745,14 @@ body {
     flex-direction: row;
     text-align: left;
     max-width: 320px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    padding-top: 2vh;
   }
 
   .avatar-container {
     width: 80px;
     height: 80px;
+    margin-top: 15px;
   }
 
   .user-name {
@@ -707,6 +761,10 @@ body {
 
   .user-title {
     font-size: 14px;
+  }
+
+  .sections-container {
+    padding: 0 10px 10px;
   }
 
   .carousel-container {

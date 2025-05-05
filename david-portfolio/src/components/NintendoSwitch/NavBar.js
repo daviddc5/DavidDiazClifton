@@ -27,12 +27,12 @@ const NavBar = ({ onHomeClick, selectedSection }) => {
         </div>
       )}
 
-      <div className="controls">
+      {/* <div className="controls">
         <span className="control-btn">A</span>
         <span className="control-text">Select</span>
         <span className="control-btn">B</span>
         <span className="control-text">Back</span>
-      </div>
+      </div> */}
     </div>
   );
 };
