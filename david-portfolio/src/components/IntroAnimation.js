@@ -333,7 +333,7 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
           </div>
         </div>
       )}
-      {isLoaded && <div className="enter-hint">Click anywhere to enter</div>}
+      {/* {isLoaded && <div className="enter-hint">Click anywhere to enter</div>} */}
     </div>
   );
 };
