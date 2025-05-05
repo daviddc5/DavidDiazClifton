@@ -11,7 +11,7 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x121212);
+    scene.background = new THREE.Color(0xf5f5f7); // Light background matching Switch theme
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
@@ -28,14 +28,19 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
     containerRef.current.appendChild(renderer.domElement);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    const pointLight = new THREE.PointLight(0xff0055, 1, 100);
+    // Nintendo Switch colors
+    const switchRed = 0xe60012; // Red Joy-Con color
+    const switchBlue = 0x1eaaf1; // Blue Joy-Con color
+    const switchDark = 0x1a1a1a; // Dark text color
+
+    const pointLight = new THREE.PointLight(switchRed, 1, 100);
     pointLight.position.set(0, 0, 3);
     scene.add(pointLight);
 
@@ -56,13 +61,13 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
       context.fillRect(0, 0, width, height);
 
       // Set text properties
-      context.font = `bold ${fontSize}px Arial, sans-serif`;
+      context.font = `bold ${fontSize}px Roboto, sans-serif`; // Use Roboto to match theme
       context.textAlign = "center";
       context.textBaseline = "middle";
 
       // Add a subtle glow/shadow
       context.shadowColor = color;
-      context.shadowBlur = 15;
+      context.shadowBlur = 12;
 
       // Fill text
       context.fillStyle = color;
@@ -79,28 +84,34 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
     const textGroup = new THREE.Group();
     scene.add(textGroup);
 
-    // Main name
-    const nameTexture = createTextTexture(userName, 60, "#00a2ff", 800, 120);
+    // Main name - using Switch blue
+    const nameTexture = createTextTexture(
+      userName,
+      60,
+      `#1eaaf1`, // Switch blue
+      800,
+      120
+    );
     const nameMaterial = new THREE.SpriteMaterial({
       map: nameTexture,
       transparent: true,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending, // Changed from AdditiveBlending for better contrast
     });
 
     const nameSprite = new THREE.Sprite(nameMaterial);
     nameSprite.scale.set(3, 0.5, 1);
     textGroup.add(nameSprite);
 
-    // Subtitle
+    // Subtitle - using Switch red
     const subtitleTexture = createTextTexture(
       "Full Stack Developer",
       30,
-      "#ff3864"
+      `#e60012` // Switch red
     );
     const subtitleMaterial = new THREE.SpriteMaterial({
       map: subtitleTexture,
       transparent: true,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending, // Changed from AdditiveBlending
     });
 
     const subtitleSprite = new THREE.Sprite(subtitleMaterial);
@@ -109,12 +120,16 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
     textGroup.add(subtitleSprite);
 
     // Enter prompt
-    const enterTexture = createTextTexture(24, "#ffffff");
+    const enterTexture = createTextTexture(
+      "Click to Enter",
+      24,
+      `#1a1a1a` // Switch dark
+    );
     const enterMaterial = new THREE.SpriteMaterial({
       map: enterTexture,
       transparent: true,
       opacity: 0.8,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending, // Changed from AdditiveBlending
     });
 
     const enterSprite = new THREE.Sprite(enterMaterial);
@@ -138,8 +153,8 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
       const smallGeometry = new THREE.IcosahedronGeometry(0.15, 0);
 
       const materials = [
-        new THREE.MeshPhongMaterial({ color: 0x00a2ff, shininess: 100 }),
-        new THREE.MeshPhongMaterial({ color: 0xff3864, shininess: 100 }),
+        new THREE.MeshPhongMaterial({ color: switchBlue, shininess: 100 }), // Switch blue
+        new THREE.MeshPhongMaterial({ color: switchRed, shininess: 100 }), // Switch red
       ];
 
       // Create a few decorative elements and position them around the text
@@ -175,7 +190,7 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
 
     // Particles background for depth
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1000;
+    const particlesCount = 800; // Reduced slightly
     const posArray = new Float32Array(particlesCount * 3);
 
     for (let i = 0; i < particlesCount * 3; i++) {
@@ -188,11 +203,11 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
     );
 
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.05,
-      color: 0xffffff,
+      size: 0.04,
+      color: switchDark, // Using Switch dark color
       transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending,
+      opacity: 0.5, // Lower opacity for lighter theme
+      blending: THREE.NormalBlending, // Changed from AdditiveBlending
     });
 
     const particlesMesh = new THREE.Points(
@@ -309,7 +324,15 @@ const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
       className={`intro-animation-container ${isLoaded ? "clickable" : ""}`}
       onClick={isLoaded ? onEnter : undefined}
     >
-      {!isLoaded && <div className="loading-indicator">Loading...</div>}
+      {!isLoaded && (
+        <div className="loading-indicator">
+          <div className="nintendo-loading">
+            <div className="loading-dot"></div>
+            <div className="loading-dot"></div>
+            <div className="loading-dot"></div>
+          </div>
+        </div>
+      )}
       {isLoaded && <div className="enter-hint">Click anywhere to enter</div>}
     </div>
   );
