@@ -1,5 +1,12 @@
 import React from "react";
-import { User, Briefcase, GraduationCap, Code, Contact } from "lucide-react";
+import {
+  User,
+  Briefcase,
+  GraduationCap,
+  Code,
+  Contact,
+  FolderKanban,
+} from "lucide-react";
 
 // Section definitions for the grid
 const sections = [
@@ -26,6 +33,12 @@ const sections = [
     title: "Skills",
     icon: <Code size={24} />,
     color: "#00C3E3", // Blue
+  },
+  {
+    id: "projects",
+    title: "Projects",
+    icon: <FolderKanban size={24} />,
+    color: "#9747FF", // Purple
   },
   {
     id: "contact",
@@ -122,6 +135,46 @@ const skills = {
   ],
 };
 
+// New projects section
+const projects = {
+  projects: [
+    {
+      title: "Nintendo Switch Portfolio",
+      description:
+        "Interactive portfolio website designed to mimic the Nintendo Switch interface, built with React and modern CSS.",
+      image: "/api/placeholder/400/200",
+      tech: ["React", "CSS", "JavaScript"],
+      github: "https://github.com/VindicoDavid/nintendo-switch-portfolio",
+      live: "https://daviddiazclifton.com",
+    },
+    {
+      title: "Drone Radar Simulator",
+      description:
+        "A simulator developed for BAE Systems to measure trust in automated systems when experiencing changes in precision.",
+      image: "/api/placeholder/400/200",
+      tech: ["React", "Node.js", "JavaScript"],
+      github: "https://github.com/VindicoDavid/drone-simulator",
+    },
+    {
+      title: "Eventify",
+      description:
+        "An event management and ticketing platform built during Hatless Talent training, featuring event creation, ticketing, and user management.",
+      image: "/api/placeholder/400/200",
+      tech: ["React", "Tailwind CSS", "Firebase"],
+      github: "https://github.com/VindicoDavid/eventify",
+      live: "https://eventify-demo.netlify.app",
+    },
+    {
+      title: "Productivity App",
+      description:
+        "App designed to reduce digital distractions by tracking app usage and scheduling tasks, developed for my dissertation project.",
+      image: "/api/placeholder/400/200",
+      tech: ["React Native", "Node.js", "MongoDB"],
+      github: "https://github.com/VindicoDavid/productivity-app",
+    },
+  ],
+};
+
 const contact = {
   location: "London, E10QQ, UK",
   email: "daviddiazclifton@gmail.com",
@@ -136,6 +189,7 @@ const portfolioData = {
   experience,
   education,
   skills,
+  projects,
   contact,
 };
 

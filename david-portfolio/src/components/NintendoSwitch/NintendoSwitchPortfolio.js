@@ -7,7 +7,7 @@ import ProfileSection from "./sections/ProfileSection";
 import EducationSection from "./sections/EducationSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import SkillsSection from "./sections/SkillsSection";
-// import ProjectsSection from "./sections/ProjectsSection";
+import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 import portfolioData from "../../data/portfolioData";
 import "../../styles/NintendoSwitch.css";
@@ -15,6 +15,9 @@ import "../../styles/NintendoSwitch.css";
 const NintendoSwitchPortfolio = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  // Get ordered sections array for navigation
+  const orderedSections = portfolioData.sections;
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
@@ -24,6 +27,14 @@ const NintendoSwitchPortfolio = () => {
   const handleHomeClick = () => {
     setSelectedSection(null);
     setIsMenuOpen(true);
+  };
+
+  // Handle navigation between sections
+  const handleNavigation = (sectionId) => {
+    const section = orderedSections.find((s) => s.id === sectionId);
+    if (section) {
+      setSelectedSection(section);
+    }
   };
 
   const renderSectionContent = () => {
@@ -37,6 +48,8 @@ const NintendoSwitchPortfolio = () => {
         return <ExperienceSection data={portfolioData.experience} />;
       case "skills":
         return <SkillsSection data={portfolioData.skills} />;
+      case "projects":
+        return <ProjectsSection data={portfolioData.projects} />;
       case "contact":
         return <ContactSection data={portfolioData.contact} />;
       default:
@@ -71,6 +84,37 @@ const NintendoSwitchPortfolio = () => {
             }}
           >
             {renderSectionContent()}
+
+            {/* Nintendo Style Navigation */}
+            <div className="switch-navigation">
+              {orderedSections.map((section) => (
+                <button
+                  key={section.id}
+                  className={`switch-nav-button ${
+                    selectedSection && selectedSection.id === section.id
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() => handleNavigation(section.id)}
+                  style={{
+                    color: section.color,
+                  }}
+                >
+                  <div
+                    className="switch-nav-icon"
+                    style={{
+                      backgroundColor:
+                        selectedSection && selectedSection.id === section.id
+                          ? section.color + "40"
+                          : "rgba(255, 255, 255, 0.2)",
+                    }}
+                  >
+                    {section.icon}
+                  </div>
+                  <span className="switch-nav-text">{section.title}</span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
