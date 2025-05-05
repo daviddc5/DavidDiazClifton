@@ -1,5 +1,5 @@
 import React from "react";
-import NintendoSwitchPortfolio from "./components/NintendoSwitchPortfolio";
+import NintendoSwitchPortfolio from "./components/NintendoSwitch/NintendoSwitchPortfolio.js";
 import "./App.css";
 
 function App() {

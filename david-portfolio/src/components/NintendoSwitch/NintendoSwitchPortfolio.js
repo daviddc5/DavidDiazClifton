@@ -3,15 +3,14 @@ import StatusBar from "./StatusBar";
 import UserProfile from "./UserProfile";
 import SectionGrid from "./SectionGrid";
 import NavBar from "./NavBar";
-import ProfileSection from "./ProfileSection";
-import EducationSection from "./EducationSection";
-import ExperienceSection from "./ExperienceSection";
-import SkillsSection from "./SkillsSection";
-import ProjectsSection from "./ProjectsSection";
-import ContactSection from "./ContactSection";
-import portfolioData from "../data/portfolioData";
-// import {useMediaQuery} from 'react-responsive';
-import "../styles/NintendoSwitch.css";
+import ProfileSection from "./sections/ProfileSection";
+import EducationSection from "./sections/EducationSection";
+import ExperienceSection from "./sections/ExperienceSection";
+import SkillsSection from "./sections/SkillsSection";
+// import ProjectsSection from "./sections/ProjectsSection";
+import ContactSection from "./sections/ContactSection";
+import portfolioData from "../../data/portfolioData";
+import "../../styles/NintendoSwitch.css";
 
 const NintendoSwitchPortfolio = () => {
   const [selectedSection, setSelectedSection] = useState(null);
@@ -21,6 +20,7 @@ const NintendoSwitchPortfolio = () => {
     setSelectedSection(section);
     setIsMenuOpen(false);
   };
+
   const handleHomeClick = () => {
     setSelectedSection(null);
     setIsMenuOpen(true);
@@ -29,28 +29,27 @@ const NintendoSwitchPortfolio = () => {
   const renderSectionContent = () => {
     if (!selectedSection) return null;
     switch (selectedSection.id) {
-      case "Profile":
+      case "profile":
         return <ProfileSection data={portfolioData.profile} />;
-      case "Education":
+      case "education":
         return <EducationSection data={portfolioData.education} />;
-      case "Experience":
+      case "experience":
         return <ExperienceSection data={portfolioData.experience} />;
-      case "Skills":
+      case "skills":
         return <SkillsSection data={portfolioData.skills} />;
-      case "Projects":
-        return <ProjectsSection data={portfolioData.projects} />;
-      case "Contact":
+      case "contact":
         return <ContactSection data={portfolioData.contact} />;
       default:
         return null;
     }
   };
+
   return (
     <div className="nintendo-switch-portfolio">
       <StatusBar />
 
       <div className="console-content">
-        {isMenuOpen && (
+        {isMenuOpen ? (
           <>
             <UserProfile
               name="David Diaz Clifton"
@@ -62,25 +61,23 @@ const NintendoSwitchPortfolio = () => {
               onSectionClick={handleSectionClick}
             />
           </>
+        ) : (
+          <div
+            className="section-view"
+            style={{
+              backgroundColor: selectedSection
+                ? selectedSection.color + "15"
+                : "",
+            }}
+          >
+            {renderSectionContent()}
+          </div>
         )}
-        : (
-        <div
-          className="section-view"
-          style={{
-            backgroundColor: selectedSection
-              ? selectedSection.color + "15"
-              : "",
-          }}
-        >
-          {renderSectionContent()}
-        </div>
-        )
-        <NavBar
-          onHomeClick={handleHomeClick}
-          selectedSection={selectedSection}
-        />
       </div>
+
+      <NavBar onHomeClick={handleHomeClick} selectedSection={selectedSection} />
     </div>
   );
 };
+
 export default NintendoSwitchPortfolio;
