@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StatusBar from "./StatusBar";
 import UserProfile from "./UserProfile";
-import SectionCarousel from "./SectionCarousel";
+import SectionGrid from "./SectionGrid";
 import NavBar from "./NavBar";
 import ProfileSection from "./sections/ProfileSection";
 import EducationSection from "./sections/EducationSection";
@@ -15,13 +15,19 @@ import "../../styles/NintendoSwitch.css";
 const NintendoSwitchPortfolio = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isPressing, setIsPressing] = useState(false);
 
   // Get ordered sections array for navigation
   const orderedSections = portfolioData.sections;
 
   const handleSectionClick = (section) => {
-    setSelectedSection(section);
-    setIsMenuOpen(false);
+    setIsPressing(true);
+    // Add short delay to allow press animation to complete
+    setTimeout(() => {
+      setSelectedSection(section);
+      setIsMenuOpen(false);
+      setIsPressing(false);
+    }, 300);
   };
 
   const handleHomeClick = () => {
@@ -58,7 +64,9 @@ const NintendoSwitchPortfolio = () => {
   };
 
   return (
-    <div className="nintendo-switch-portfolio">
+    <div
+      className={`nintendo-switch-portfolio ${isPressing ? "pressing" : ""}`}
+    >
       <StatusBar />
 
       <div className="console-content">
@@ -72,7 +80,7 @@ const NintendoSwitchPortfolio = () => {
 
             {/* Wrap the sections in a scrollable container */}
             <div className="sections-container">
-              <SectionCarousel
+              <SectionGrid
                 sections={portfolioData.sections}
                 onSectionClick={handleSectionClick}
               />
@@ -88,42 +96,16 @@ const NintendoSwitchPortfolio = () => {
             }}
           >
             {renderSectionContent()}
-
-            {/* Nintendo Style Navigation */}
-            <div className="switch-navigation">
-              {orderedSections.map((section) => (
-                <button
-                  key={section.id}
-                  className={`switch-nav-button ${
-                    selectedSection && selectedSection.id === section.id
-                      ? "active"
-                      : ""
-                  }`}
-                  onClick={() => handleNavigation(section.id)}
-                  style={{
-                    color: section.color,
-                  }}
-                >
-                  <div
-                    className="switch-nav-icon"
-                    style={{
-                      backgroundColor:
-                        selectedSection && selectedSection.id === section.id
-                          ? section.color + "40"
-                          : "rgba(255, 255, 255, 0.2)",
-                    }}
-                  >
-                    {section.icon}
-                  </div>
-                  <span className="switch-nav-text">{section.title}</span>
-                </button>
-              ))}
-            </div>
           </div>
         )}
       </div>
 
-      <NavBar onHomeClick={handleHomeClick} selectedSection={selectedSection} />
+      <NavBar
+        onHomeClick={handleHomeClick}
+        selectedSection={selectedSection}
+        portfolioData={portfolioData}
+        onNavigate={handleNavigation}
+      />
     </div>
   );
 };

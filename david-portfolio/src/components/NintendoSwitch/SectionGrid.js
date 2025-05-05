@@ -1,16 +1,21 @@
 import React from "react";
-import SectionTile from "./SectionTile";
 
 const SectionGrid = ({ sections, onSectionClick }) => {
   return (
-    <div className="section-grid">
-      {sections.map((section) => (
-        <SectionTile
-          key={section.id}
-          section={section}
-          onClick={onSectionClick}
-        />
-      ))}
+    <div className="section-grid-container">
+      <div className="section-grid">
+        {sections.map((section) => (
+          <div
+            key={section.id}
+            className="section-tile"
+            style={{ backgroundColor: section.color }}
+            onClick={() => onSectionClick(section)}
+          >
+            <div className="tile-icon">{section.icon}</div>
+            <div className="tile-title">{section.title}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
