@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StatusBar from "./StatusBar";
 import UserProfile from "./UserProfile";
-import SectionGrid from "./SectionGrid";
+import SectionCarousel from "./SectionCarousel"; // Import new carousel component
 import NavBar from "./NavBar";
 import ProfileSection from "./sections/ProfileSection";
 import EducationSection from "./sections/EducationSection";
@@ -69,7 +69,8 @@ const NintendoSwitchPortfolio = () => {
               title="Full Stack Developer"
               avatarSrc="/DavidDC.jpg"
             />
-            <SectionGrid
+            {/* Replace SectionGrid with SectionCarousel */}
+            <SectionCarousel
               sections={portfolioData.sections}
               onSectionClick={handleSectionClick}
             />
