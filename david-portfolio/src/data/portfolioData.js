@@ -50,7 +50,7 @@ const sections = [
 
 // Content for each section
 const profile = {
-  text: "Full Stack Developer with a frontend focus, passionate about creating intuitive interfaces. I enjoy backend work and aim to grow further in UI design.",
+  text: "I'm a Full Stack Developer with a frontend emphasis, passionate about creating intuitive user experiences and seamless interfaces. At the same time, I deeply enjoy backend development—designing robust systems and scalable architectures—and continue to expand my expertise in that area. I'm especially drawn to JavaScript and Python for their versatility across the stack.",
 };
 
 const experience = {
@@ -139,9 +139,16 @@ const skills = {
 const projects = {
   projects: [
     {
+      title: "Care Home Systems",
+      description:
+        "Contributed to the development of web and mobile apps for the care home industry, serving 50,000 users, focusing on resident engagement and supporting care providers. This project is under NDA. Please reach out to me (daviddiazclifton@gmail.com) if you'd like to learn more about the project! ",
+      image: "CareHomeLogin.jpg",
+      tech: ["Vue3", "Node.js", "MongoDB", "React"],
+    },
+    {
       title: "Productivity App",
       description:
-        "App designed to reduce digital distractions by tracking app usage and scheduling tasks, developed for my dissertation project.",
+        "Responsive website developed for my university disseration designed to reduce digital distractions by tracking app usage and scheduling tasks, developed for my dissertation project.",
       image: "ProductivityApp.png",
       tech: ["React Native", "Node.js"],
       github: "https://github.com/VindicoDavid/productivity-app",
@@ -150,7 +157,7 @@ const projects = {
     {
       title: "Drone Radar Simulator",
       description:
-        "A simulator developed for BAE Systems/Cardiff University joint research to measure trust in automated systems when experiencing changes in precision.",
+        "A simulator application developed for BAE Systems/Cardiff University joint research to measure trust in automated systems when experiencing changes in precision.",
       image: "DroneSimulator.png",
       tech: ["React", "Node.js", "JavaScript"],
       github:
@@ -163,8 +170,7 @@ const projects = {
       image: "Eventify.png",
       tech: ["Figma", "React", "Node.js"],
       // github: "https://github.com/VindicoDavid/eventify",
-      Figma:
-        "https://www.figma.com/design/0i1KP9IWtJ9PcBfgr7C3VS/Hatless-Talent---Eventify-Designs?node-id=0-1&p=f&t=AuL3S7D5ACHtV5GT-00",
+      live: "https://www.figma.com/design/0i1KP9IWtJ9PcBfgr7C3VS/Hatless-Talent---Eventify-Designs?node-id=0-1&p=f&t=AuL3S7D5ACHtV5GT-00",
     },
   ],
 };

@@ -55,7 +55,7 @@ const ProjectsSection = ({ data }) => {
                     className="project-link"
                   >
                     <ExternalLink size={16} />
-                    <span>Live Demo</span>
+                    <span>Live</span>
                   </a>
                 )}
               </div>

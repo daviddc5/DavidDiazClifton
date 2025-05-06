@@ -7,7 +7,17 @@ const ProfileSection = ({ data }) => {
     <div className="section-content profile-section">
       <SectionHeader title="Profile" />
       <Card>
-        <p>{data.text}</p>
+        <div className="profile-content">
+          <div className="profile-images">
+            <img
+              src="/DavidDC.jpg"
+              alt="David Diaz Clifton"
+              className="profile-image"
+            />
+            <img src="/Jenga.jpg" alt="Jenga" className="profile-image" />
+          </div>
+          <p>{data.text}</p>
+        </div>
       </Card>
     </div>
   );
