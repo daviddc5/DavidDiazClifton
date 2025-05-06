@@ -60,7 +60,7 @@ const experience = {
       role: "Full Stack Software Developer",
       period: "Oct 2023 – Present",
       techStack:
-        "Vue3 · Vue2 · NodeJS · MongoDB · Firebase · Redis · Google Cloud Platform",
+        "Vue3 · Vue2 · NodeJS · React · MongoDB · Firebase · Redis · Google Cloud Platform",
       bullets: [
         "Contributed to web and mobile apps for the care home industry, serving 50,000 users.",
         "Redeveloped an entertainment system enhancing resident well-being through interactive activities.",
