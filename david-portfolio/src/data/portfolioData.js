@@ -142,26 +142,29 @@ const projects = {
       title: "Productivity App",
       description:
         "App designed to reduce digital distractions by tracking app usage and scheduling tasks, developed for my dissertation project.",
-      image: "/api/placeholder/400/200",
-      tech: ["React Native", "Node.js", "MongoDB"],
+      image: "ProductivityApp.png",
+      tech: ["React Native", "Node.js"],
       github: "https://github.com/VindicoDavid/productivity-app",
+      live: "https://boisterous-basbousa-d66359.netlify.app/",
     },
     {
       title: "Drone Radar Simulator",
       description:
-        "A simulator developed for BAE Systems to measure trust in automated systems when experiencing changes in precision.",
-      image: "/api/placeholder/400/200",
+        "A simulator developed for BAE Systems/Cardiff University joint research to measure trust in automated systems when experiencing changes in precision.",
+      image: "DroneSimulator.png",
       tech: ["React", "Node.js", "JavaScript"],
-      github: "https://github.com/VindicoDavid/drone-simulator",
+      github:
+        "https://github.com/daviddc5/DroneRadarSimulatorCopy?tab=readme-ov-file",
     },
     {
-      title: "Eventify",
+      title: "Eventify Figma Mockup",
       description:
         "An event management and ticketing platform built during Hatless Talent training, featuring event creation, ticketing, and user management.",
-      image: "/api/placeholder/400/200",
-      tech: ["React", "Tailwind CSS", "Firebase"],
-      github: "https://github.com/VindicoDavid/eventify",
-      live: "https://eventify-demo.netlify.app",
+      image: "Eventify.png",
+      tech: ["Figma", "React", "Node.js"],
+      // github: "https://github.com/VindicoDavid/eventify",
+      Figma:
+        "https://www.figma.com/design/0i1KP9IWtJ9PcBfgr7C3VS/Hatless-Talent---Eventify-Designs?node-id=0-1&p=f&t=AuL3S7D5ACHtV5GT-00",
     },
   ],
 };
