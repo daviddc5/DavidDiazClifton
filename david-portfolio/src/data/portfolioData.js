@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 // Section definitions for the grid
+
 const sections = [
   {
     id: "profile",
@@ -20,34 +21,33 @@ const sections = [
     id: "experience",
     title: "Experience",
     icon: <Briefcase size={24} />,
-    color: "#1EAAF1", // Blue Joy-Con
+    color: "#0075C2", // Nintendo Blue (slightly adjusted)
   },
   {
     id: "education",
     title: "Education",
     icon: <GraduationCap size={24} />,
-    color: "#1AB500", // Nintendo Green
+    color: "#00C853", // Vibrant Green
   },
   {
     id: "skills",
     title: "Skills",
     icon: <Code size={24} />,
-    color: "#00C3E3", // Blue
-  },
-  {
-    id: "projects",
-    title: "Projects",
-    icon: <FolderKanban size={24} />,
-    color: "#9747FF", // Purple
+    color: "#FF6D00", // Nintendo Orange
   },
   {
     id: "contact",
     title: "Contact",
     icon: <Contact size={24} />,
-    color: "#FFA200", // Nintendo Orange
+    color: "#0d9488", // Teal
+  },
+  {
+    id: "projects",
+    title: "Projects",
+    icon: <FolderKanban size={24} />,
+    color: "#8E24AA", // Royal Purple
   },
 ];
-
 // Content for each section
 const profile = {
   text: "I'm a Full Stack Developer with a frontend emphasis, passionate about creating intuitive user experiences and seamless interfaces. At the same time, I deeply enjoy backend development—designing robust systems and scalable architectures—and continue to expand my expertise in that area. I'm especially drawn to JavaScript and Python for their versatility across the stack.",
