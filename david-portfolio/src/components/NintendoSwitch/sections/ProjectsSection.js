@@ -15,13 +15,6 @@ const ProjectsSection = ({ data }) => {
             className="project-card"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className="project-image-container">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="project-image"
-              />
-            </div>
             <div className="project-content">
               <h1 className="project-title">{project.title}</h1>
               <p className="project-description">{project.description}</p>
@@ -32,6 +25,14 @@ const ProjectsSection = ({ data }) => {
                     {tech}
                   </span>
                 ))}
+              </div>
+              <br />
+              <div className="project-image-container">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-image"
+                />
               </div>
 
               <div className="project-links">
