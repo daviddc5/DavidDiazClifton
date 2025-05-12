@@ -1,14 +1,16 @@
 import React, { useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBar = ({
   onHomeClick,
   selectedSection,
   portfolioData,
-  onNavigate,
   isMobile = false,
+  currentPath,
 }) => {
   const navRef = useRef(null);
   const activeButtonRef = useRef(null);
+  const location = useLocation();
 
   // Scroll to active button when section changes
   useEffect(() => {
@@ -28,7 +30,7 @@ const NavBar = ({
         behavior: "smooth",
       });
     }
-  }, [selectedSection]);
+  }, [selectedSection, location]);
 
   // Find the middle index of the sections array
   const getMiddleIndex = () => {
@@ -74,8 +76,9 @@ const NavBar = ({
             {/* First half of sections */}
             <div className="navbar-navigation-half">
               {getFirstHalfSections().map((section) => (
-                <button
+                <Link
                   key={section.id}
+                  to={`/${section.id}`}
                   ref={
                     selectedSection && selectedSection.id === section.id
                       ? activeButtonRef
@@ -86,7 +89,6 @@ const NavBar = ({
                       ? "active"
                       : ""
                   }`}
-                  onClick={() => onNavigate(section.id)}
                   style={{
                     color: section.color,
                   }}
@@ -109,16 +111,12 @@ const NavBar = ({
                     {section.icon}
                   </div>
                   <span className="navbar-nav-text">{section.title}</span>
-                </button>
+                </Link>
               ))}
             </div>
 
             {/* Home button in the middle */}
-            <button
-              className="home-button"
-              onClick={onHomeClick}
-              aria-label="Home"
-            >
+            <Link to="/" className="home-button" aria-label="Home">
               <svg
                 width="20"
                 height="20"
@@ -131,13 +129,14 @@ const NavBar = ({
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
-            </button>
+            </Link>
 
             {/* Second half of sections */}
             <div className="navbar-navigation-half">
               {getSecondHalfSections().map((section) => (
-                <button
+                <Link
                   key={section.id}
+                  to={`/${section.id}`}
                   ref={
                     selectedSection && selectedSection.id === section.id
                       ? activeButtonRef
@@ -148,7 +147,6 @@ const NavBar = ({
                       ? "active"
                       : ""
                   }`}
-                  onClick={() => onNavigate(section.id)}
                   style={{
                     color: section.color,
                   }}
@@ -171,16 +169,12 @@ const NavBar = ({
                     {section.icon}
                   </div>
                   <span className="navbar-nav-text">{section.title}</span>
-                </button>
+                </Link>
               ))}
             </div>
           </div>
         ) : (
-          <button
-            className="home-button"
-            onClick={onHomeClick}
-            aria-label="Home"
-          >
+          <Link to="/" className="home-button" aria-label="Home">
             <svg
               width="20"
               height="20"
@@ -193,9 +187,12 @@ const NavBar = ({
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
-          </button>
+          </Link>
         )}
       </div>
+
+      {/* Right placeholder for balance */}
+      <div className="nav-placeholder"></div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import StatusBar from "./StatusBar";
 import UserProfile from "./UserProfile";
 import SectionGrid from "./SectionGrid";
@@ -13,13 +14,20 @@ import portfolioData from "../../data/portfolioData";
 import "../../styles/NintendoSwitch.css";
 
 const NintendoSwitchPortfolio = () => {
-  const [selectedSection, setSelectedSection] = useState(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isPressing, setIsPressing] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Get ordered sections array for navigation
-  const orderedSections = portfolioData.sections;
+  // Determine current section based on path
+  const currentPath = location.pathname;
+  const sectionId = currentPath.replace("/", "");
+  const selectedSection = sectionId
+    ? portfolioData.sections.find((s) => s.id === sectionId)
+    : null;
+
+  // On the home page when there's no section selected
+  const isMenuOpen = !selectedSection || currentPath === "/";
 
   // Check for mobile view
   useEffect(() => {
@@ -43,44 +51,13 @@ const NintendoSwitchPortfolio = () => {
     setIsPressing(true);
     // Add short delay to allow press animation to complete
     setTimeout(() => {
-      setSelectedSection(section);
-      setIsMenuOpen(false);
+      navigate(`/${section.id}`);
       setIsPressing(false);
     }, 300);
   };
 
   const handleHomeClick = () => {
-    setSelectedSection(null);
-    setIsMenuOpen(true);
-  };
-
-  // Handle navigation between sections
-  const handleNavigation = (sectionId) => {
-    const section = orderedSections.find((s) => s.id === sectionId);
-    if (section) {
-      setSelectedSection(section);
-      setIsMenuOpen(false);
-    }
-  };
-
-  const renderSectionContent = () => {
-    if (!selectedSection) return null;
-    switch (selectedSection.id) {
-      case "profile":
-        return <ProfileSection data={portfolioData.profile} />;
-      case "education":
-        return <EducationSection data={portfolioData.education} />;
-      case "experience":
-        return <ExperienceSection data={portfolioData.experience} />;
-      case "skills":
-        return <SkillsSection data={portfolioData.skills} />;
-      case "projects":
-        return <ProjectsSection data={portfolioData.projects} />;
-      case "contact":
-        return <ContactSection data={portfolioData.contact} />;
-      default:
-        return null;
-    }
+    navigate("/");
   };
 
   return (
@@ -117,7 +94,32 @@ const NintendoSwitchPortfolio = () => {
                 : "",
             }}
           >
-            {renderSectionContent()}
+            <Routes>
+              <Route
+                path="/profile"
+                element={<ProfileSection data={portfolioData.profile} />}
+              />
+              <Route
+                path="/education"
+                element={<EducationSection data={portfolioData.education} />}
+              />
+              <Route
+                path="/experience"
+                element={<ExperienceSection data={portfolioData.experience} />}
+              />
+              <Route
+                path="/skills"
+                element={<SkillsSection data={portfolioData.skills} />}
+              />
+              <Route
+                path="/projects"
+                element={<ProjectsSection data={portfolioData.projects} />}
+              />
+              <Route
+                path="/contact"
+                element={<ContactSection data={portfolioData.contact} />}
+              />
+            </Routes>
           </div>
         )}
       </div>
@@ -126,8 +128,8 @@ const NintendoSwitchPortfolio = () => {
         onHomeClick={handleHomeClick}
         selectedSection={selectedSection}
         portfolioData={portfolioData}
-        onNavigate={handleNavigation}
         isMobile={isMobile}
+        currentPath={currentPath}
       />
     </div>
   );

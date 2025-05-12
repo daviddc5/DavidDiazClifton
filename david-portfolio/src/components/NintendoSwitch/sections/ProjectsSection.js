@@ -23,7 +23,7 @@ const ProjectsSection = ({ data }) => {
               />
             </div>
             <div className="project-content">
-              <h3 className="project-title">{project.title}</h3>
+              <h1 className="project-title">{project.title}</h1>
               <p className="project-description">{project.description}</p>
 
               <div className="project-tech">
