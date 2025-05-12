@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import "./IntroAnimation.css";
+import "../Animation/IntroAnimation.css";
 
 const IntroAnimation = ({ onEnter, userName = "David Diaz Clifton" }) => {
   const containerRef = useRef(null);

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import ThemeToggle from "../../styles/themeToggle"; // Import the ThemeToggle component
 
 const NavBar = ({
   onHomeClick,
@@ -191,8 +192,10 @@ const NavBar = ({
         )}
       </div>
 
-      {/* Right placeholder for balance */}
-      <div className="nav-placeholder"></div>
+      {/* Right placeholder for theme toggle */}
+      <div className="nav-placeholder">
+        <ThemeToggle />
+      </div>
     </div>
   );
 };

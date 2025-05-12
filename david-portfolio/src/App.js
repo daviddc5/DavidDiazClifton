@@ -1,19 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import NintendoSwitchPortfolio from "./components/NintendoSwitch/NintendoSwitchPortfolio";
-import IntroAnimation from "./components/IntroAnimation";
+import IntroAnimation from "./components/Animation/IntroAnimation";
 import "./App.css";
+
+// Initialize theme from localStorage
+const initializeTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+};
 
 // This component wraps the portfolio and checks the current path
 const PortfolioWrapper = () => {
   const location = useLocation();
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = React.useState(false);
 
-  useEffect(() => {
-    // Create a session storage variable to track if we've shown the intro
+  // Check if this is the first visit in this session
+  React.useEffect(() => {
+    // Only show intro when on home page AND we haven't shown it yet this session
     const hasShownIntroThisSession = sessionStorage.getItem("hasShownIntro");
 
-    // Only show intro when on home page AND we haven't shown it yet this session
     if (
       (location.pathname === "/" || location.pathname === "") &&
       !hasShownIntroThisSession
@@ -40,6 +50,11 @@ const PortfolioWrapper = () => {
 };
 
 function App() {
+  // Initialize theme when the app loads
+  useEffect(() => {
+    initializeTheme();
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
