@@ -306,13 +306,14 @@ body {
   padding: 20px;
   color: var(--switch-dark);
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
+
   margin: 0 auto 20px;
   overflow-y: auto; /* Allow vertical scrolling for section content */
 }
 
 .section-header {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 24px;
   position: relative;
@@ -368,21 +369,22 @@ body {
 
 .job-header h3,
 .school-header h3 {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--switch-dark);
+  margin-bottom: ;
 }
 
 .job-period,
 .school-period {
-  font-size: 14px;
+  font-size: 24px;
   color: #666;
   font-weight: 500;
 }
 
 .job-role,
 .school-degree {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 500;
   color: var(--switch-blue);
   margin-bottom: 6px;
