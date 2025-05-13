@@ -15,37 +15,37 @@ const sections = [
     id: "profile",
     title: "Profile",
     icon: <User size={24} />,
-    color: "#2A4D69", // Deep blue
+    color: "#E60012", // Nintendo Red
   },
   {
     id: "experience",
     title: "Experience",
     icon: <Briefcase size={24} />,
-    color: "#2E6E65", // Medium blue
+    color: "#0075C2", // Nintendo Blue (slightly adjusted)
   },
   {
     id: "education",
     title: "Education",
     icon: <GraduationCap size={24} />,
-    color: "#D16666", // Dusty rose
+    color: "#00C853", // Vibrant Green
   },
   {
     id: "skills",
     title: "Skills",
     icon: <Code size={24} />,
-    color: "#4B86B4", // Teal green
+    color: "#FF6D00", // Nintendo Orange
   },
   {
     id: "contact",
     title: "Contact",
     icon: <Contact size={24} />,
-    color: "#6E2E5A", // Deep purple
+    color: "#0d9488", // Teal
   },
   {
     id: "projects",
     title: "Projects",
     icon: <FolderKanban size={24} />,
-    color: "#E76F51", // Terracotta
+    color: "#8E24AA", // Royal Purple
   },
 ];
 // Content for each section
