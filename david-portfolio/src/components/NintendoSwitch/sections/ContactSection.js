@@ -10,26 +10,26 @@ const ContactSection = ({ data }) => {
 
       <Card className="contact-card">
         <div className="contact-item">
-          <MapPin size={20} />
+          <MapPin size={25} />
           <span>{data.location}</span>
         </div>
 
         <div className="contact-item">
-          <Mail size={20} />
+          <Mail size={25} />
           <a href={`mailto:${data.email}`} className="contact-link">
             {data.email}
           </a>
         </div>
 
         <div className="contact-item">
-          <Phone size={20} />
+          <Phone size={25} />
           <a href={`tel:${data.phone}`} className="contact-link">
             {data.phone}
           </a>
         </div>
 
         <div className="contact-item">
-          <Linkedin size={20} />
+          <Linkedin size={25} />
           <a
             href={`https://${data.linkedin}`}
             target="_blank"
@@ -41,7 +41,7 @@ const ContactSection = ({ data }) => {
         </div>
 
         <div className="contact-item">
-          <Github size={20} />
+          <Github size={25} />
           <a
             href={data.github}
             target="_blank"

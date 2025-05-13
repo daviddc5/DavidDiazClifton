@@ -8,6 +8,7 @@ const ProfileSection = ({ data }) => {
       <SectionHeader title="Profile" />
       <Card>
         <div className="profile-content">
+          <p>{data.text}</p>
           <div className="profile-images">
             <img
               src="/DavidDC.jpg"
@@ -16,7 +17,6 @@ const ProfileSection = ({ data }) => {
             />
             <img src="/Jenga.jpg" alt="Jenga" className="profile-image" />
           </div>
-          <p>{data.text}</p>
         </div>
       </Card>
     </div>

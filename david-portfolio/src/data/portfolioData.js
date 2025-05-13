@@ -82,7 +82,8 @@ const experience = {
       ],
     },
     {
-      company: "Cardiff Centre for AI, Robotics and Human-Machine Systems",
+      company:
+        "Cardiff Centre for AI, Robotics and Human-Machine Systems (IROHMS)",
       role: "Software Engineer (Year in Industry)",
       period: "Sep 2021 – Jun 2022",
       techStack: "NodeJS · JavaScript · React · HTML · CSS · Bootstrap",
@@ -120,8 +121,8 @@ const education = {
 
 const skills = {
   technical: [
-    "Frontend: React, Vue, JavaScript, HTML, CSS, Tailwind, Bootstrap",
-    "Backend: Node.js, MongoDB, Firebase, Redis, SQL",
+    "Frontend: HTML, CSS, JavaScript, React, Typescript, Vue3, Tailwind CSS, Bootstrap",
+    "Backend: Node.js, MongoDB, Firebase, Redis, SQL, Python, Java",
     "Tools: Git, GitHub, Figma, Google Cloud Platform",
   ],
   languages: [
