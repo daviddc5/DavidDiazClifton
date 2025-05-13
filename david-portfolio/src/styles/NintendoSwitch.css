@@ -17,24 +17,18 @@
 
 /* Dark mode variables */
 [data-theme="dark"] {
-  /* Base colors */
   --switch-bg: #121212;
-  --switch-dark: #1e1e1e;
-  --switch-text: #ffffff;
-  --switch-red: #ff4d4d;
-  --switch-blue: #4dabf7;
-  --switch-nav: #0a0a0a;
-
-  /* Card and container colors */
-  --card-bg: #1e1e1e;
-  --card-shadow: rgba(0, 0, 0, 0.5);
+  --switch-dark: #1a1a1a;
+  --switch-text: #f5f5f7;
+  --switch-red: #e60012;
+  --switch-blue: #1eaaf1;
+  --switch-nav: #2c2c2c;
+  --card-bg: #1a1a1a;
+  --card-shadow: rgba(255, 255, 255, 0.08);
   --border-color: #333;
-
-  /* Text colors */
-  --secondary-text: #bbbbbb;
-  --tertiary-text: #999999;
+  --secondary-text: #aaa;
+  --tertiary-text: #ccc;
 }
-
 * {
   margin: 0;
   padding: 0;

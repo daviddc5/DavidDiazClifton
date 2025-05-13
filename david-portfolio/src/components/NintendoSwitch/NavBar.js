@@ -2,6 +2,9 @@ import React, { useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "../../styles/themeToggle"; // Import the ThemeToggle component
 
+// Light gray color for navbar text
+const NAVBAR_TEXT_COLOR = "#d8d8d8";
+
 const NavBar = ({
   onHomeClick,
   selectedSection,
@@ -60,7 +63,9 @@ const NavBar = ({
               className="indicator-color"
               style={{ backgroundColor: selectedSection.color }}
             ></div>
-            <span>{selectedSection.title}</span>
+            <span style={{ color: NAVBAR_TEXT_COLOR }}>
+              {selectedSection.title}
+            </span>
           </div>
         )}
       </div>
@@ -91,7 +96,7 @@ const NavBar = ({
                       : ""
                   }`}
                   style={{
-                    color: section.color,
+                    color: NAVBAR_TEXT_COLOR,
                   }}
                   aria-label={`Go to ${section.title}`}
                   aria-current={
@@ -123,7 +128,7 @@ const NavBar = ({
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
+                stroke={NAVBAR_TEXT_COLOR}
                 strokeWidth="2"
                 aria-hidden="true"
               >
@@ -149,7 +154,7 @@ const NavBar = ({
                       : ""
                   }`}
                   style={{
-                    color: section.color,
+                    color: NAVBAR_TEXT_COLOR,
                   }}
                   aria-label={`Go to ${section.title}`}
                   aria-current={
@@ -181,7 +186,7 @@ const NavBar = ({
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke={NAVBAR_TEXT_COLOR}
               strokeWidth="2"
               aria-hidden="true"
             >
