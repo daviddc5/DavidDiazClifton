@@ -520,6 +520,7 @@ body {
 
 /* Contact Section */
 .contact-item {
+  font-size: larger;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1137,6 +1138,13 @@ body {
     gap: 25px;
     padding: 15px;
   }
+  .contact-item {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
 
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1152,6 +1160,13 @@ body {
   .section-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
     gap: 20px;
+  }
+  .contact-item {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   .section-tile.pressed {
@@ -1173,7 +1188,13 @@ body {
     padding-top: 3vh;
     margin-bottom: 30px;
   }
-
+  .contact-item {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
   .section-grid {
     padding: 10px;
   }
@@ -1250,7 +1271,13 @@ body {
     margin-bottom: 15px;
     padding-top: 2vh;
   }
-
+  .contact-item {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
   .section-grid {
     grid-template-columns: 1fr; /* Single column on mobile */
     gap: 15px;
@@ -1374,6 +1401,13 @@ body {
     justify-content: center;
     width: 100%;
     z-index: 5;
+  }
+  .contact-item {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   /* Make navigation container adapt to available space */
@@ -1511,6 +1545,13 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+  }
+  .contact-item {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   /* Position controls and indicator to the sides */
