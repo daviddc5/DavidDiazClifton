@@ -3,6 +3,11 @@ import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import SectionHeader from "../../shared/SectionHeader";
 import Card from "../../shared/Card";
 
+// For projects using Create React App or similar:
+// Import the image from the public folder
+// If you're using Next.js, use this import instead:
+// import seaPhoto from "../../../../public/seaPhoto.jpg";
+
 const ContactSection = ({ data }) => {
   return (
     <div className="section-content contact-section">
@@ -50,6 +55,18 @@ const ContactSection = ({ data }) => {
           >
             {data.github}
           </a>
+        </div>
+        <div className="photos-container">
+          <div className="sea-photo-container">
+            <img src="/pink.jpg" alt="Sea landscape" className="sea-photo" />
+          </div>
+          <div className="sea-photo-container">
+            <img
+              src="/seaPhoto2.jpg"
+              alt="Sea landscape"
+              className="sea-photo"
+            />
+          </div>
         </div>
       </Card>
     </div>

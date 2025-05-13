@@ -15,7 +15,7 @@ const sections = [
     id: "profile",
     title: "Profile",
     icon: <User size={24} />,
-    color: "#B23A48",
+    color: "#B23A48", // Muted Nintendo Red
   },
   {
     id: "experience",
@@ -131,7 +131,7 @@ const skills = {
     "Currently learning Turkish",
   ],
   interests: [
-    "Calisthenics, football, hiking, and travel",
+    "Calisthenics, photography, football, hiking, and travel",
     "Passionate about digital and physical design",
   ],
 };
