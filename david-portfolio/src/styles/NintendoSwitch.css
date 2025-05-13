@@ -150,8 +150,8 @@ body {
 
 /* Avatar Hover Effect */
 .avatar-container {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid white;
@@ -164,7 +164,7 @@ body {
 }
 
 .avatar-container:hover {
-  transform: scale(2);
+  transform: scale(2.125);
   border-color: var(--switch-blue);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   z-index: 10;
@@ -197,7 +197,7 @@ body {
 .user-title {
   color: var(--secondary-text);
   font-weight: 800;
-  font-size: 32px;
+  font-size: 28px;
 }
 
 /* Sections Container - Allow overflow for scaling effect */
