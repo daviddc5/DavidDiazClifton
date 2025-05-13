@@ -257,6 +257,7 @@ body {
 /* Section Tiles */
 .section-tile {
   height: 160px;
+
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -1199,10 +1200,6 @@ body {
     padding: 10px;
   }
 
-  .section-tile {
-    height: 140px;
-  }
-
   .navbar-nav-text {
     display: none; /* Hide text on smaller screens */
   }
@@ -1279,12 +1276,18 @@ body {
     margin-bottom: 16px;
   }
   .section-grid {
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    gap: 20px;
+    overflow: auto; /* Allow horizontal scrolling */
+
+    overflow-y: auto; /* Allow vertical scrolling */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .section-tile {
     height: 120px;
+    width: 150px;
     max-width: 280px;
     margin: 0 auto;
   }
