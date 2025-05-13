@@ -951,7 +951,7 @@ body {
 
 .profile-image {
   width: 400px;
-  height: 00px;
+  height: 400px;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
