@@ -66,8 +66,13 @@ const NintendoSwitchPortfolio = () => {
       role="application"
       aria-label="Nintendo Switch-styled portfolio"
     >
-      <StatusBar />
-
+      <NavBar
+        onHomeClick={handleHomeClick}
+        selectedSection={selectedSection}
+        portfolioData={portfolioData}
+        isMobile={isMobile}
+        currentPath={currentPath}
+      />
       <div className="console-content">
         {isMenuOpen ? (
           <>
@@ -123,14 +128,6 @@ const NintendoSwitchPortfolio = () => {
           </div>
         )}
       </div>
-
-      <NavBar
-        onHomeClick={handleHomeClick}
-        selectedSection={selectedSection}
-        portfolioData={portfolioData}
-        isMobile={isMobile}
-        currentPath={currentPath}
-      />
     </div>
   );
 };
