@@ -3,7 +3,12 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-color: #f5f5f7; /* Lighter background matching Nintendo theme */
+  background-color: #f5f5f7;
+  transition: opacity 0.6s ease;
+}
+
+.intro-animation-container.exiting {
+  opacity: 0;
 }
 
 .intro-animation-container canvas {
@@ -13,34 +18,109 @@
   left: 0;
 }
 
+/* Transition-specific styles */
+.intro-animation-container.transitioning {
+  cursor: default !important;
+}
+
+.intro-animation-container.transitioning.phase-1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.2) 80%
+  );
+  pointer-events: none;
+  z-index: 5;
+  animation: pulse-gradient 1.5s infinite alternate;
+}
+
+@keyframes pulse-gradient {
+  from {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.2) 80%
+    );
+  }
+  to {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0) 10%,
+      rgba(255, 255, 255, 0.3) 90%
+    );
+  }
+}
+
+.intro-animation-container.transitioning.phase-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(230, 0, 18, 0.1) 0%,
+    rgba(30, 170, 241, 0.1) 50%,
+    rgba(230, 0, 18, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  animation: shift-gradient 1s infinite alternate;
+}
+
+@keyframes shift-gradient {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+/* Hide transition sound element */
+.transition-sound {
+  display: none;
+}
+
 .loading-indicator {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #1a1a1a; /* Darker text for contrast */
+  color: #1a1a1a;
   font-size: 24px;
-  font-family: "Roboto", sans-serif; /* Matching font with main CSS */
+  font-family: "Roboto", sans-serif;
   text-align: center;
   font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 10;
 }
 
 /* Nintendo-style loading animation */
 .nintendo-loading {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   margin: 16px auto 0;
   justify-content: center;
 }
 
 .loading-dot {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background-color: #1eaaf1; /* Switch blue */
   border-radius: 50%;
   animation: nintendo-dot-pulse 1.5s infinite ease-in-out;
@@ -61,112 +141,83 @@
   100% {
     transform: scale(0.8);
     opacity: 0.5;
+    box-shadow: 0 0 0 rgba(30, 170, 241, 0);
   }
   50% {
     transform: scale(1.2);
     opacity: 1;
+    box-shadow: 0 0 12px rgba(30, 170, 241, 0.6);
   }
 }
 
-.enter-hint {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #1a1a1a; /* Darker text for contrast */
-  font-size: 18px;
-  font-family: "Roboto", sans-serif; /* Matching font with main CSS */
-  text-align: center;
-  opacity: 0;
-  animation: pulse 2s infinite;
-  padding: 12px 24px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 24px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0.6;
-    transform: translateX(-50%) scale(0.98);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.02);
-  }
-  100% {
-    opacity: 0.6;
-    transform: translateX(-50%) scale(0.98);
-  }
-}
-
-/* Text overlay - additional element for 3D scene text enhancement */
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  pointer-events: none; /* Allow clicking through to the canvas */
-  z-index: 10;
-}
-
-.text-overlay-name {
-  font-family: "Roboto", sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: #1a1a1a;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-    0 0 20px rgba(30, 170, 241, 0.5);
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 12px 30px;
-  border-radius: 8px;
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  margin: 0;
-}
-
-.text-overlay-subtitle {
-  font-family: "Roboto", sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  color: #e60012; /* Switch red */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.75);
-  padding: 8px 20px;
-  border-radius: 6px;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-
+/* Enhanced hover effect */
 .intro-animation-container.clickable {
   cursor: pointer;
 }
 
-/* Transition effect - smoother and lighter */
-.app-transition-enter {
+.intro-animation-container.clickable::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    transparent 80%,
+    rgba(30, 170, 241, 0.1) 100%
+  );
   opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
-.app-transition-enter-active {
-  opacity: 1;
-  transition: opacity 800ms ease-in-out;
-}
-
-.app-transition-exit {
+.intro-animation-container.clickable:hover::after {
   opacity: 1;
 }
 
-.app-transition-exit-active {
-  opacity: 0;
-  transition: opacity 800ms ease-in-out;
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .loading-indicator {
+    font-size: 20px;
+    padding: 16px 24px;
+  }
+
+  .nintendo-loading {
+    gap: 12px;
+  }
+
+  .loading-dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-indicator {
+    font-size: 18px;
+    padding: 14px 20px;
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+/* Accessibility focus styles */
+.intro-animation-container:focus-visible {
+  outline: 3px solid #1eaaf1;
+  outline-offset: -3px;
+}
+
+/* Animation for entrance transition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.intro-animation-container {
+  animation: fadeIn 1s ease-out;
 }
