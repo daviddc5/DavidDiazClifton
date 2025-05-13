@@ -377,7 +377,41 @@ body {
   font-size: 18px;
   line-height: 1.6;
 }
+/* Add these styles to your existing CSS */
 
+/* Hide scrollbar for the experience section while keeping functionality */
+.experience-section {
+  overflow-y: auto; /* Allow vertical scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.experience-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Same for experience cards container */
+.experience-cards {
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.experience-cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* Make sure section content keeps the scrolling functionality */
+.section-content {
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.section-content::-webkit-scrollbar {
+  display: none;
+}
 /* Experience Section */
 .experience-cards {
   display: flex;
