@@ -56,18 +56,6 @@ const ContactSection = ({ data }) => {
             {data.github}
           </a>
         </div>
-        <div className="photos-container">
-          <div className="sea-photo-container">
-            <img src="/pink.jpg" alt="Sea landscape" className="sea-photo" />
-          </div>
-          <div className="sea-photo-container">
-            <img
-              src="/seaPhoto2.jpg"
-              alt="Sea landscape"
-              className="sea-photo"
-            />
-          </div>
-        </div>
       </Card>
     </div>
   );
