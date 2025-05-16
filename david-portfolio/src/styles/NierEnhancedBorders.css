@@ -1,0 +1,286 @@
+/* NieR: Automata Enhanced Borders
+ * This file enhances the navbar border and adds a footer border
+ * in the distinctive NieR: Automata UI style.
+ */
+
+/* Enhanced Navbar Border - stronger, double-line style */
+.nav-bar {
+  position: relative; /* Ensure positioning context for pseudo-elements */
+  border-bottom: 2px solid var(--nier-border) !important; /* Make primary border stronger */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+/* Add distinctive double-line effect with animation */
+.nav-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Position slightly below main border */
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--nier-border);
+  opacity: 0.7;
+}
+
+/* Add decorative corner elements to the navbar */
+.nav-bar::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 20px; /* Position from left edge */
+  width: 35px;
+  height: 2px;
+  background-color: var(--nier-accent);
+  box-shadow: 0 0 5px var(--nier-accent);
+  animation: nier-border-pulse 2s infinite alternate;
+}
+
+/* NieR style footer line */
+.nintendo-switch-portfolio::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--nier-border);
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+/* Add secondary footer line for double-line effect */
+.nintendo-switch-portfolio::before {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--nier-border);
+  opacity: 0.7;
+  z-index: 100;
+}
+
+/* Add NieR-style decorative elements to footer */
+.nier-footer-decoration {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 99;
+}
+
+.nier-data-block {
+  width: 80px;
+  height: 15px;
+  background: linear-gradient(
+    90deg,
+    var(--nier-accent) 0%,
+    var(--nier-accent) 60%,
+    transparent 60.1%,
+    transparent 70%,
+    var(--nier-accent) 70.1%,
+    var(--nier-accent) 100%
+  );
+  position: relative;
+  margin: 0 10px;
+}
+
+.nier-data-line {
+  width: 100%;
+  max-width: 200px;
+  height: 1px;
+  background-color: var(--nier-border);
+  opacity: 0.5;
+  position: relative;
+  margin-top: 7px;
+}
+
+.nier-data-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30%;
+  height: 100%;
+  background-color: var(--nier-accent);
+  animation: nier-data-line-pulse 3s infinite alternate;
+}
+
+/* Pulsing animations for NieR aesthetic */
+@keyframes nier-border-pulse {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 3px var(--nier-accent);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--nier-accent);
+  }
+}
+
+@keyframes nier-data-line-pulse {
+  0% {
+    width: 30%;
+    opacity: 0.8;
+  }
+  100% {
+    width: 70%;
+    opacity: 0.4;
+  }
+}
+
+/* Add decorative pixel blocks to corners - NieR UI motif */
+.nier-pixel-block {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--nier-accent);
+  opacity: 0.8;
+  box-shadow: 0 0 5px var(--nier-accent);
+  animation: nier-pixel-pulse 2s infinite alternate;
+}
+
+.nier-pixel-block.bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.nier-pixel-block.bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+@keyframes nier-pixel-pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+/* NieR: Automata OS Info Display */
+.nier-os-info {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--nier-accent);
+  text-transform: uppercase;
+  text-align: right;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  z-index: 100;
+  background-color: var(--nier-bg);
+  padding: 10px 14px;
+  border: 1px solid var(--nier-border);
+  box-shadow: 3px 3px 0 var(--nier-shadow);
+  animation: nier-panel-fade-in 1s ease-out;
+}
+
+.nier-os-info::before,
+.nier-os-info::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-style: solid;
+  border-color: var(--nier-accent);
+}
+
+.nier-os-info::before {
+  top: 4px;
+  right: 4px;
+  border-width: 0 1px 0 0;
+}
+
+.nier-os-info::after {
+  bottom: 4px;
+  left: 4px;
+  border-width: 0 0 1px 1px;
+}
+
+.nier-os-line {
+  position: relative;
+}
+
+/* Last line with special styling */
+.nier-os-line:last-child {
+  margin-top: 5px;
+  font-weight: bold;
+  animation: nier-status-blink 2s infinite alternate;
+}
+
+.nier-os-line:last-child::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--nier-light-border);
+}
+
+@keyframes nier-status-blink {
+  0%,
+  90% {
+    color: var(--nier-accent);
+  }
+  95% {
+    color: transparent;
+  }
+  100% {
+    color: var(--nier-accent);
+  }
+}
+
+@keyframes nier-panel-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .nier-data-block {
+    width: 60px;
+    height: 12px;
+  }
+
+  .nier-os-info {
+    top: 65px;
+    right: 10px;
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nier-data-block {
+    width: 40px;
+    height: 10px;
+  }
+
+  .nier-footer-decoration {
+    padding: 0 10px;
+  }
+
+  .nier-os-info {
+    top: 60px;
+    right: 5px;
+    font-size: 8px;
+    padding: 6px 8px;
+    max-width: 40%;
+  }
+}

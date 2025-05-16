@@ -118,7 +118,7 @@ body::after {
 .nav-bar {
   background-color: var(--nier-ui-dark);
   color: var(--nier-accent);
-  border-bottom: 1px solid var(--nier-border);
+  border-bottom: px solid var(--nier-border);
   height: 60px;
   display: flex;
   justify-content: space-between;

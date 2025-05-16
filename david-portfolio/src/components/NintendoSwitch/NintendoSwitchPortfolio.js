@@ -1,3 +1,6 @@
+// Import the custom CSS file first
+import "../../styles/NierEnhancedBorders.css";
+
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import StatusBar from "./StatusBar";
@@ -10,6 +13,8 @@ import ExperienceSection from "./sections/ExperienceSection";
 import SkillsSection from "./sections/SkillsSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
+import NierFooter from "./NierFooter"; // Import our new footer component
+import NierSystemInfo from "./NierSystemInfo"; // Import the system info component
 import portfolioData from "../../data/portfolioData";
 import "../../styles/NintendoSwitch.css";
 
@@ -71,8 +76,6 @@ const NintendoSwitchPortfolio = () => {
     navigate("/");
   };
 
-  // NieR UI component - OS Info display
-
   return (
     <div
       className={`nintendo-switch-portfolio ${isPressing ? "pressing" : ""}`}
@@ -110,10 +113,7 @@ const NintendoSwitchPortfolio = () => {
             </div>
           </>
         ) : (
-          <div
-            className={`section-view ${isTransitioning ? "entering" : ""}`}
-            // Removed custom background color style
-          >
+          <div className={`section-view ${isTransitioning ? "entering" : ""}`}>
             <Routes>
               <Route
                 path="/profile"
@@ -144,7 +144,11 @@ const NintendoSwitchPortfolio = () => {
         )}
       </div>
 
-      {/* NieR-style footer with data blocks */}
+      {/* Add the NieR-style system info component */}
+      <NierSystemInfo />
+
+      {/* Add the NieR-style footer */}
+      <NierFooter />
     </div>
   );
 };
