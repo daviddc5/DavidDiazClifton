@@ -195,7 +195,7 @@ body {
 }
 
 .user-title {
-  color: var(--secondary-text);
+  color: var(--switch-text);
   font-weight: 800;
   font-size: 28px;
 }
@@ -294,6 +294,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--switch-text) !important;
 }
 
 .tile-title {
@@ -301,6 +302,7 @@ body {
   font-weight: 500;
   text-align: center;
   padding: 0 10px;
+  color: var(--switch-text) !important;
 }
 
 .section-tile.pressed .tile-title {
@@ -1309,10 +1311,6 @@ body {
 
   .user-name {
     font-size: 20px;
-  }
-
-  .user-title {
-    font-size: 14px;
   }
 
   .sections-container {

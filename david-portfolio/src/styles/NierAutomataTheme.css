@@ -397,8 +397,9 @@ body::after {
 .user-title {
   font-family: "Inconsolata", monospace;
   font-weight: 400;
-  color: var(--nier-accent);
+
   opacity: 0.8;
+  color: var(--switch-text);
 }
 
 /* Heading elements */
