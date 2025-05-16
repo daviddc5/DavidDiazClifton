@@ -35,7 +35,7 @@ const NierSystemInfo = () => {
   return (
     <div className="nier-os-info">
       <div className="nier-os-line">SYSTEM VER. 1.05_RE</div>
-      <div className="nier-os-line">MODEL: YoRHa-D</div>
+
       <div className="nier-os-line">DATE: {formatDate(currentTime)}</div>
       <div className="nier-os-line">TIME: {formatTime(currentTime)}</div>
       <div className="nier-os-line">STATUS: OPERATIONAL</div>
