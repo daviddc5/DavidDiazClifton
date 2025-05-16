@@ -565,7 +565,7 @@ body::after {
   }
 }
 
-/* Glitch effect for entering new sections */
+/* Glitch effect for entering new sections
 .section-view.entering::before {
   content: "";
   position: absolute;
@@ -578,7 +578,21 @@ body::after {
   z-index: 10;
   pointer-events: none;
   background-color: var(--nier-bg);
+} */
+
+/* Option 1: Remove glitch effect completely and replace with clean fade */
+/* .section-view.entering {
+  animation: clean-fade 0.4s ease-out forwards !important;
 }
+
+@keyframes clean-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
 
 /* Scanline effect - subtle background pattern */
 .console-content::before {
@@ -854,9 +868,9 @@ body::after {
 }
 
 /* Add glitch animation to section transitions */
-.section-view {
+/* .section-view {
   position: relative;
-}
+} */
 
 .section-view.entering {
   animation: nier-section-transition 0.6s ease-out;

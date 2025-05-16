@@ -78,7 +78,7 @@
   background-color: var(--nier-card-bg);
   border: 1px solid var(--nier-border);
   position: relative;
-  animation: menuAppear 0.3s ease forwards;
+
   margin-top: 60px; /* Space for the navbar */
 }
 
