@@ -15,8 +15,8 @@ const NavBar = ({
   const location = useLocation();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  // Determine if we're on the home page
-  const isHomePage = !selectedSection || currentPath === "/";
+  // Determine if we're on the profile page (now the main page)
+  const isOnProfile = currentPath === "/profile" || currentPath === "/";
 
   // Check screen size for responsive menu
   useEffect(() => {
@@ -69,7 +69,7 @@ const NavBar = ({
         onHomeClick();
       }
     } else {
-      // Navigate to home
+      // Navigate to profile page (home)
       if (onHomeClick) {
         onHomeClick();
       }
@@ -120,133 +120,126 @@ const NavBar = ({
       {/* Centered navigation - Only shown on desktop */}
       {!showMobileMenu && (
         <div className="navbar-center">
-          {selectedSection ? (
-            <div
-              className="navbar-navigation-container"
-              ref={navRef}
-              role="navigation"
-              aria-label="Section navigation"
-            >
-              {/* First half of sections */}
-              <div className="navbar-navigation-half">
-                {getFirstHalfSections().map((section) => (
-                  <Link
-                    key={section.id}
-                    to={`/${section.id}`}
-                    ref={
+          <div
+            className="navbar-navigation-container"
+            ref={navRef}
+            role="navigation"
+            aria-label="Section navigation"
+          >
+            {/* First half of sections */}
+            <div className="navbar-navigation-half">
+              {getFirstHalfSections().map((section) => (
+                <Link
+                  key={section.id}
+                  to={`/${section.id}`}
+                  ref={
+                    selectedSection && selectedSection.id === section.id
+                      ? activeButtonRef
+                      : null
+                  }
+                  className={`navbar-nav-button ${
+                    selectedSection && selectedSection.id === section.id
+                      ? "active"
+                      : ""
+                  }`}
+                  style={{
+                    color:
                       selectedSection && selectedSection.id === section.id
-                        ? activeButtonRef
-                        : null
-                    }
-                    className={`navbar-nav-button ${
+                        ? "white"
+                        : undefined,
+                    backgroundColor:
                       selectedSection && selectedSection.id === section.id
-                        ? "active"
-                        : ""
-                    }`}
+                        ? section.color
+                        : undefined,
+                  }}
+                  aria-label={`Go to ${section.title}`}
+                  aria-current={
+                    selectedSection && selectedSection.id === section.id
+                      ? "page"
+                      : undefined
+                  }
+                >
+                  <div
+                    className="navbar-nav-icon"
                     style={{
-                      color:
-                        selectedSection && selectedSection.id === section.id
-                          ? "white"
-                          : undefined,
                       backgroundColor:
                         selectedSection && selectedSection.id === section.id
-                          ? section.color
-                          : undefined,
+                          ? section.color + "40"
+                          : "rgba(255, 255, 255, 0.2)",
                     }}
-                    aria-label={`Go to ${section.title}`}
-                    aria-current={
-                      selectedSection && selectedSection.id === section.id
-                        ? "page"
-                        : undefined
-                    }
                   >
-                    <div
-                      className="navbar-nav-icon"
-                      style={{
-                        backgroundColor:
-                          selectedSection && selectedSection.id === section.id
-                            ? section.color + "40"
-                            : "rgba(255, 255, 255, 0.2)",
-                      }}
-                    >
-                      {section.icon}
-                    </div>
-                    <span className="navbar-nav-text">{section.title}</span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Home button in the middle - ONLY shown when not on home page */}
-              {!isHomePage && (
-                <Link to="/" className="home-button" aria-label="Home">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                  </svg>
+                    {section.icon}
+                  </div>
+                  <span className="navbar-nav-text">{section.title}</span>
                 </Link>
-              )}
+              ))}
+            </div>
 
-              {/* Second half of sections */}
-              <div className="navbar-navigation-half">
-                {getSecondHalfSections().map((section) => (
-                  <Link
-                    key={section.id}
-                    to={`/${section.id}`}
-                    ref={
+            {/* Home button in the middle - Modified to always show and point to profile */}
+            {/* <Link to="/profile" className="home-button" aria-label="Home">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </Link> */}
+
+            {/* Second half of sections */}
+            <div className="navbar-navigation-half">
+              {getSecondHalfSections().map((section) => (
+                <Link
+                  key={section.id}
+                  to={`/${section.id}`}
+                  ref={
+                    selectedSection && selectedSection.id === section.id
+                      ? activeButtonRef
+                      : null
+                  }
+                  className={`navbar-nav-button ${
+                    selectedSection && selectedSection.id === section.id
+                      ? "active"
+                      : ""
+                  }`}
+                  style={{
+                    color:
                       selectedSection && selectedSection.id === section.id
-                        ? activeButtonRef
-                        : null
-                    }
-                    className={`navbar-nav-button ${
+                        ? "white"
+                        : undefined,
+                    backgroundColor:
                       selectedSection && selectedSection.id === section.id
-                        ? "active"
-                        : ""
-                    }`}
+                        ? section.color
+                        : undefined,
+                  }}
+                  aria-label={`Go to ${section.title}`}
+                  aria-current={
+                    selectedSection && selectedSection.id === section.id
+                      ? "page"
+                      : undefined
+                  }
+                >
+                  <div
+                    className="navbar-nav-icon"
                     style={{
-                      color:
-                        selectedSection && selectedSection.id === section.id
-                          ? "white"
-                          : undefined,
                       backgroundColor:
                         selectedSection && selectedSection.id === section.id
-                          ? section.color
-                          : undefined,
+                          ? section.color + "40"
+                          : "rgba(255, 255, 255, 0.2)",
                     }}
-                    aria-label={`Go to ${section.title}`}
-                    aria-current={
-                      selectedSection && selectedSection.id === section.id
-                        ? "page"
-                        : undefined
-                    }
                   >
-                    <div
-                      className="navbar-nav-icon"
-                      style={{
-                        backgroundColor:
-                          selectedSection && selectedSection.id === section.id
-                            ? section.color + "40"
-                            : "rgba(255, 255, 255, 0.2)",
-                      }}
-                    >
-                      {section.icon}
-                    </div>
-                    <span className="navbar-nav-text">{section.title}</span>
-                  </Link>
-                ))}
-              </div>
+                    {section.icon}
+                  </div>
+                  <span className="navbar-nav-text">{section.title}</span>
+                </Link>
+              ))}
             </div>
-          ) : (
-            // When on home page, don't show the home button
-            <div></div>
-          )}
+          </div>
         </div>
       )}
 

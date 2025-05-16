@@ -33,9 +33,6 @@ const NintendoSwitchPortfolio = () => {
     ? portfolioData.sections.find((s) => s.id === sectionId)
     : null;
 
-  // On the home page when there's no section selected
-  const isMenuOpen = !selectedSection || currentPath === "/";
-
   // Check for mobile view
   useEffect(() => {
     const checkMobile = () => {
@@ -76,7 +73,7 @@ const NintendoSwitchPortfolio = () => {
   };
 
   const handleHomeClick = () => {
-    navigate("/");
+    navigate("/profile"); // Changed from "/" to "/profile"
   };
 
   return (
@@ -94,61 +91,38 @@ const NintendoSwitchPortfolio = () => {
       />
 
       <div className="console-content">
-        {isMenuOpen ? (
-          <>
-            <UserProfile
-              name="David Diaz Clifton"
-              title="Full Stack Developer"
-              avatarSrc="/DavidDC.jpg"
+        <div className={`section-view ${isTransitioning ? "entering" : ""}`}>
+          <Routes>
+            <Route
+              path="/"
+              element={<ProfileSection data={portfolioData.profile} />}
             />
-
-            {/* Wrap the sections in a scrollable container */}
-            <div
-              className={`sections-container ${
-                isMobile ? "mobile-scroll" : ""
-              }`}
-            >
-              {/* NieR-style heading */}
-              <div className="nier-heading" data-text="SYSTEM MODULES">
-                SYSTEM MODULES
-              </div>
-
-              <SectionGrid
-                sections={portfolioData.sections}
-                onSectionClick={handleSectionClick}
-              />
-            </div>
-          </>
-        ) : (
-          <div className={`section-view ${isTransitioning ? "entering" : ""}`}>
-            <Routes>
-              <Route
-                path="/profile"
-                element={<ProfileSection data={portfolioData.profile} />}
-              />
-              <Route
-                path="/education"
-                element={<EducationSection data={portfolioData.education} />}
-              />
-              <Route
-                path="/experience"
-                element={<ExperienceSection data={portfolioData.experience} />}
-              />
-              <Route
-                path="/skills"
-                element={<SkillsSection data={portfolioData.skills} />}
-              />
-              <Route
-                path="/projects"
-                element={<ProjectsSection data={portfolioData.projects} />}
-              />
-              <Route
-                path="/contact"
-                element={<ContactSection data={portfolioData.contact} />}
-              />
-            </Routes>
-          </div>
-        )}
+            <Route
+              path="/profile"
+              element={<ProfileSection data={portfolioData.profile} />}
+            />
+            <Route
+              path="/education"
+              element={<EducationSection data={portfolioData.education} />}
+            />
+            <Route
+              path="/experience"
+              element={<ExperienceSection data={portfolioData.experience} />}
+            />
+            <Route
+              path="/skills"
+              element={<SkillsSection data={portfolioData.skills} />}
+            />
+            <Route
+              path="/projects"
+              element={<ProjectsSection data={portfolioData.projects} />}
+            />
+            <Route
+              path="/contact"
+              element={<ContactSection data={portfolioData.contact} />}
+            />
+          </Routes>
+        </div>
       </div>
 
       {/* Add the NieR-style footer */}

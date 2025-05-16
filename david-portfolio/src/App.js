@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import NintendoSwitchPortfolio from "./components/NintendoSwitch/NintendoSwitchPortfolio";
 
 import "./App.css";
@@ -20,7 +26,6 @@ const initializeTheme = () => {
 // This component wraps the portfolio and checks the current path
 const PortfolioWrapper = () => {
   const location = useLocation();
-  const [showIntro, setShowIntro] = React.useState(false);
 
   // Check if this is the first visit in this session
   React.useEffect(() => {
@@ -31,21 +36,17 @@ const PortfolioWrapper = () => {
       (location.pathname === "/" || location.pathname === "") &&
       !hasShownIntroThisSession
     ) {
-      setShowIntro(true);
       // Mark that we've shown the intro this session
       sessionStorage.setItem("hasShownIntro", "true");
     }
   }, [location.pathname]);
 
-  const handleEnterPortfolio = () => {
-    setShowIntro(false);
-  };
+  // If user is on the root path, redirect to profile section
+  if (location.pathname === "/" || location.pathname === "") {
+    return <Navigate to="/profile" replace />;
+  }
 
-  return (
-    <>
-      <NintendoSwitchPortfolio></NintendoSwitchPortfolio>
-    </>
-  );
+  return <NintendoSwitchPortfolio />;
 };
 
 function App() {
@@ -57,7 +58,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <PortfolioWrapper />
+        <Routes>
+          <Route path="/*" element={<PortfolioWrapper />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
