@@ -18,6 +18,7 @@ const NintendoSwitchPortfolio = () => {
   const location = useLocation();
   const [isPressing, setIsPressing] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Determine current section based on path
   const currentPath = location.pathname;
@@ -47,6 +48,16 @@ const NintendoSwitchPortfolio = () => {
     };
   }, []);
 
+  // Track route changes to add transition effect
+  useEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 600); // Match this with CSS animation duration
+
+    return () => clearTimeout(timer);
+  }, [currentPath]);
+
   const handleSectionClick = (section) => {
     setIsPressing(true);
     // Add short delay to allow press animation to complete
@@ -60,11 +71,20 @@ const NintendoSwitchPortfolio = () => {
     navigate("/");
   };
 
+  // NieR UI component - OS Info display
+  const NierOSInfo = () => (
+    <div className="nier-os-info">
+      <div className="nier-os-line">DavidPortfolio v3.2.6</div>
+      <div className="nier-os-line">CPU: 87% | MEM: 62%</div>
+      <div className="nier-os-line">DATA LOG TERMINAL</div>
+    </div>
+  );
+
   return (
     <div
       className={`nintendo-switch-portfolio ${isPressing ? "pressing" : ""}`}
       role="application"
-      aria-label="Nintendo Switch-styled portfolio"
+      aria-label="NieR Automata-styled portfolio"
     >
       <NavBar
         onHomeClick={handleHomeClick}
@@ -73,6 +93,10 @@ const NintendoSwitchPortfolio = () => {
         isMobile={isMobile}
         currentPath={currentPath}
       />
+
+      {/* NieR OS info display - top right corner */}
+      <NierOSInfo />
+
       <div className="console-content">
         {isMenuOpen ? (
           <>
@@ -84,6 +108,11 @@ const NintendoSwitchPortfolio = () => {
 
             {/* Wrap the sections in a scrollable container */}
             <div className="sections-container">
+              {/* NieR-style heading */}
+              <div className="nier-heading" data-text="SYSTEM MODULES">
+                SYSTEM MODULES
+              </div>
+
               <SectionGrid
                 sections={portfolioData.sections}
                 onSectionClick={handleSectionClick}
@@ -92,7 +121,7 @@ const NintendoSwitchPortfolio = () => {
           </>
         ) : (
           <div
-            className="section-view"
+            className={`section-view ${isTransitioning ? "entering" : ""}`}
             style={{
               backgroundColor: selectedSection
                 ? selectedSection.color + "15"
@@ -127,6 +156,13 @@ const NintendoSwitchPortfolio = () => {
             </Routes>
           </div>
         )}
+      </div>
+
+      {/* NieR-style footer with data blocks */}
+      <div className="nier-footer">
+        <div className="nier-data-block"></div>
+        <div className="nier-data-block"></div>
+        <div className="nier-data-block"></div>
       </div>
     </div>
   );

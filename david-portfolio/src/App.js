@@ -3,6 +3,8 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import NintendoSwitchPortfolio from "./components/NintendoSwitch/NintendoSwitchPortfolio";
 import IntroAnimation from "./components/Animation/IntroAnimation";
 import "./App.css";
+// Import NieR Automata theme
+import "./styles/NierAutomataTheme.css";
 
 // Initialize theme from localStorage
 const initializeTheme = () => {
