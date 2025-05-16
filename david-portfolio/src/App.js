@@ -5,6 +5,7 @@ import NintendoSwitchPortfolio from "./components/NintendoSwitch/NintendoSwitchP
 import "./App.css";
 // Import NieR Automata theme
 import "./styles/NierAutomataTheme.css";
+import "./styles/ThemeFixesStrong.css";
 
 // Initialize theme from localStorage
 const initializeTheme = () => {

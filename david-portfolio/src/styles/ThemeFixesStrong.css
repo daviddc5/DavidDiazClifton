@@ -5,7 +5,8 @@
 
 /* Light mode navbar - use background color instead of dark */
 .nav-bar {
-  background-color: var(--switch-bg); /* Match site background */
+  background-color: #e8e4d3; /* Match site background */
+
   color: var(--switch-text); /* Default text color */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
 }

@@ -72,13 +72,6 @@ const NintendoSwitchPortfolio = () => {
   };
 
   // NieR UI component - OS Info display
-  const NierOSInfo = () => (
-    <div className="nier-os-info">
-      <div className="nier-os-line">DavidPortfolio v3.2.6</div>
-      <div className="nier-os-line">CPU: 87% | MEM: 62%</div>
-      <div className="nier-os-line">DATA LOG TERMINAL</div>
-    </div>
-  );
 
   return (
     <div
@@ -93,9 +86,6 @@ const NintendoSwitchPortfolio = () => {
         isMobile={isMobile}
         currentPath={currentPath}
       />
-
-      {/* NieR OS info display - top right corner */}
-      <NierOSInfo />
 
       <div className="console-content">
         {isMenuOpen ? (
@@ -155,11 +145,6 @@ const NintendoSwitchPortfolio = () => {
       </div>
 
       {/* NieR-style footer with data blocks */}
-      <div className="nier-footer">
-        <div className="nier-data-block"></div>
-        <div className="nier-data-block"></div>
-        <div className="nier-data-block"></div>
-      </div>
     </div>
   );
 };

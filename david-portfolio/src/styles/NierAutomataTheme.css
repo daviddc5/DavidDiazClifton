@@ -650,7 +650,7 @@ body::after {
   letter-spacing: 1px;
   line-height: 1.5;
   z-index: 50;
-  background: var(--nier-dark-bg);
+  background: var(--nier-bg);
   padding: 8px 12px;
   border: 1px solid var(--nier-border);
   box-shadow: 2px 2px 0 var(--nier-shadow);
@@ -663,12 +663,14 @@ body::after {
   right: 0;
   width: 8px;
   height: 8px;
+
   border-right: 2px solid var(--nier-accent);
   border-bottom: 2px solid var(--nier-accent);
 }
 
 .nier-os-line {
   position: relative;
+  background: var(--nier-bg);
 }
 
 .nier-os-line:last-child {
@@ -736,26 +738,7 @@ body::after {
 }
 
 /* NieR style footer with data blocks */
-.nier-footer {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 15px 0;
-  background-color: var(--nier-dark-bg);
-  border-top: 1px solid var(--nier-border);
-  position: relative;
-}
-
-/* Add second line to footer */
-.nier-footer::before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--nier-light-border);
-}
+/*  */
 
 .nier-data-block {
   width: 80px;
