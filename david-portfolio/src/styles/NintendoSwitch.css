@@ -1388,3 +1388,162 @@ body {
     height: 180px;
   }
 }
+/* Additional responsive styles to be added to NintendoSwitch.css */
+
+/* Ensure scrollable content on mobile */
+@media (max-width: 768px) {
+  /* Improve scrolling in section view */
+  .section-view {
+    overflow-y: auto !important;
+    height: calc(100vh - 140px) !important;
+    padding-bottom: 40px;
+  }
+
+  /* Make sure sections content is scrollable */
+  .sections-container {
+    overflow-y: auto !important;
+    max-height: calc(100vh - 230px);
+    padding-bottom: 60px;
+  }
+
+  /* Fix navbar layout on mobile */
+  .nav-bar {
+    padding: 8px 12px;
+    height: auto;
+    min-height: 60px;
+  }
+
+  /* Ensure user profile doesn't take too much space */
+  .user-profile {
+    margin-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  /* Make section grid scrollable */
+  .section-grid {
+    overflow-y: auto;
+    max-height: calc(100vh - 280px);
+    padding-bottom: 40px;
+  }
+
+  /* Fix content padding */
+  .console-content {
+    padding: 10px 15px 0;
+  }
+
+  /* Adjust navigation elements for touch */
+  .navbar-nav-button {
+    padding: 8px;
+  }
+
+  /* Project cards in one column */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  /* Ensure section tiles are visible and scrollable */
+  .section-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .section-tile {
+    height: 100px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* Make avatar smaller */
+  .avatar-container {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Adjust profile text */
+  .user-name {
+    font-size: 18px;
+  }
+
+  .user-title {
+    font-size: 14px;
+  }
+
+  /* Fix content spacing */
+  .section-content {
+    padding: 10px 0;
+  }
+
+  /* Ensure cards have proper padding */
+  .card {
+    padding: 15px;
+  }
+
+  /* Make sure project images are properly sized */
+  .project-image-container {
+    height: 150px;
+  }
+}
+
+/* Ensure footer elements don't cause overflow */
+.nier-footer-decoration {
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Fix scrolling on main portfolio container */
+.nintendo-switch-portfolio {
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure console content takes available space */
+.console-content {
+  flex: 1;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add styles for section grid in mobile view */
+@media (max-width: 768px) {
+  .section-grid-container {
+    overflow-y: auto;
+    padding-bottom: 40px;
+  }
+
+  .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 375px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+    max-width: 250px;
+  }
+
+  .section-tile {
+    height: 90px;
+  }
+
+  .tile-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+  }
+
+  .tile-title {
+    font-size: 14px;
+  }
+}

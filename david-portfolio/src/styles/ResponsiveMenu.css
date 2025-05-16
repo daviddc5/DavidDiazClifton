@@ -1,0 +1,302 @@
+/* Responsive Menu Styles
+ * This file contains styles for the mobile hamburger menu and improved responsive layout
+ */
+
+/* Hamburger Menu Container */
+.hamburger-menu-container {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Hamburger Button */
+.hamburger-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  color: var(--nier-text);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hamburger-button:hover {
+  background-color: var(--nier-selection);
+}
+
+/* Dark mode button */
+[data-theme="dark"] .hamburger-button {
+  color: white;
+}
+
+[data-theme="dark"] .hamburger-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--nier-bg);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Dark mode overlay */
+[data-theme="dark"] .menu-overlay {
+  background-color: var(--nier-dark-bg);
+}
+
+/* Open menu state */
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menu Content */
+.menu-content {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--nier-card-bg);
+  border: 1px solid var(--nier-border);
+  position: relative;
+  animation: menuAppear 0.3s ease forwards;
+  margin-top: 60px; /* Space for the navbar */
+}
+
+/* Dark mode menu content */
+[data-theme="dark"] .menu-content {
+  background-color: var(--nier-card-bg-dark);
+}
+
+/* Menu decoration */
+.menu-content::before,
+.menu-content::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-color: var(--nier-accent);
+  border-style: solid;
+}
+
+.menu-content::before {
+  top: 5px;
+  left: 5px;
+  border-width: 2px 0 0 2px;
+}
+
+.menu-content::after {
+  bottom: 5px;
+  right: 5px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Menu Links Container */
+.menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+/* Menu Link Items */
+.menu-links li {
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: menuItemAppear 0.5s ease forwards;
+}
+
+/* Staggered animation for menu items */
+.menu-links li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.menu-links li:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.menu-links li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.menu-links li:nth-child(4) {
+  animation-delay: 0.25s;
+}
+.menu-links li:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.menu-links li:nth-child(6) {
+  animation-delay: 0.35s;
+}
+.menu-links li:nth-child(7) {
+  animation-delay: 0.4s;
+}
+
+/* Menu Link Styling */
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  color: var(--nier-text);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-family: "JetBrains Mono", monospace;
+  position: relative;
+}
+
+/* Dark mode links */
+[data-theme="dark"] .menu-link {
+  color: var(--nier-text);
+}
+
+.menu-link:hover {
+  background-color: var(--nier-selection);
+  border-color: var(--nier-light-border);
+}
+
+.menu-link.active {
+  background-color: var(--nier-selection);
+  border-left: 3px solid var(--nier-accent);
+  font-weight: 500;
+}
+
+/* Menu Icon */
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .menu-icon {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-link:hover .menu-icon,
+.menu-link.active .menu-icon {
+  transform: scale(1.1);
+}
+
+/* Menu Text */
+.menu-text {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+/* Improved scrollable section-grid-container */
+.section-grid-container.mobile-view {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+  margin-bottom: 20px;
+  padding-bottom: 80px; /* Give more room at the bottom */
+}
+
+/* Make sure sections are fully visible on mobile */
+.mobile-scroll {
+  overflow-y: auto !important;
+  max-height: calc(100vh - 240px) !important;
+  padding-bottom: 50px !important;
+}
+
+/* Hide scrollbars but keep functionality */
+.mobile-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mobile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animations */
+@keyframes menuAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menuItemAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .menu-content {
+    padding: 15px;
+    margin-top: 50px;
+  }
+
+  .menu-link {
+    padding: 10px;
+  }
+
+  .menu-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .menu-text {
+    font-size: 16px;
+  }
+
+  .menu-links {
+    margin-top: 15px;
+  }
+
+  /* Ensure the section grid doesn't overflow on small screens */
+  .section-grid-container.mobile-view {
+    max-height: calc(100vh - 180px);
+  }
+
+  /* Adjust height for mobile scroll */
+  .mobile-scroll {
+    max-height: calc(100vh - 180px) !important;
+  }
+}
+
+/* Ensure the navbar stays on top of everything */
+.nav-bar {
+  position: relative;
+  z-index: 1001 !important;
+}
+
+/* Ensure the hamburger menu button is accessible from the overlay */
+.menu-overlay .hamburger-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}

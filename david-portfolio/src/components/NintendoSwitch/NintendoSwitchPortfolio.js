@@ -13,10 +13,10 @@ import ExperienceSection from "./sections/ExperienceSection";
 import SkillsSection from "./sections/SkillsSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
-import NierFooter from "./NierFooter"; // Import our new footer component
-// import NierSystemInfo from "./NierSystemInfo"; // Import the system info component
+import NierFooter from "./NierFooter"; // Import our footer component
 import portfolioData from "../../data/portfolioData";
 import "../../styles/NintendoSwitch.css";
+import "../../styles/ResponsiveMenu.css"; // Import new responsive menu styles
 
 const NintendoSwitchPortfolio = () => {
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ const NintendoSwitchPortfolio = () => {
   const [isPressing, setIsPressing] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   // Determine current section based on path
   const currentPath = location.pathname;
@@ -38,7 +39,9 @@ const NintendoSwitchPortfolio = () => {
   // Check for mobile view
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setShowMobileMenu(width <= 768);
     };
 
     // Initial check
@@ -100,7 +103,11 @@ const NintendoSwitchPortfolio = () => {
             />
 
             {/* Wrap the sections in a scrollable container */}
-            <div className="sections-container">
+            <div
+              className={`sections-container ${
+                isMobile ? "mobile-scroll" : ""
+              }`}
+            >
               {/* NieR-style heading */}
               <div className="nier-heading" data-text="SYSTEM MODULES">
                 SYSTEM MODULES
@@ -143,9 +150,6 @@ const NintendoSwitchPortfolio = () => {
           </div>
         )}
       </div>
-
-      {/* Add the NieR-style system info component */}
-      {/* <NierSystemInfo /> */}
 
       {/* Add the NieR-style footer */}
       <NierFooter />

@@ -3,13 +3,17 @@ import React, { useState, useEffect } from "react";
 const SectionGrid = ({ sections, onSectionClick }) => {
   const [pressedSection, setPressedSection] = useState(null);
   const [gridLayout, setGridLayout] = useState(3); // Default to 3 columns
+  const [isMobileView, setIsMobileView] = useState(false);
 
   // Handle responsive grid layout
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 480) {
+      const width = window.innerWidth;
+      setIsMobileView(width <= 768);
+
+      if (width <= 480) {
         setGridLayout(1); // 1 column on mobile
-      } else if (window.innerWidth <= 900) {
+      } else if (width <= 900) {
         setGridLayout(2); // 2 columns on tablets
       } else {
         setGridLayout(3); // 3 columns on desktop
@@ -48,7 +52,9 @@ const SectionGrid = ({ sections, onSectionClick }) => {
   };
 
   return (
-    <div className="section-grid-container">
+    <div
+      className={`section-grid-container ${isMobileView ? "mobile-view" : ""}`}
+    >
       <div
         className="section-grid"
         style={{
