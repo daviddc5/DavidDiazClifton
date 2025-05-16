@@ -122,11 +122,7 @@ const NintendoSwitchPortfolio = () => {
         ) : (
           <div
             className={`section-view ${isTransitioning ? "entering" : ""}`}
-            style={{
-              backgroundColor: selectedSection
-                ? selectedSection.color + "15"
-                : "",
-            }}
+            // Removed custom background color style
           >
             <Routes>
               <Route
