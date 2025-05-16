@@ -14,7 +14,7 @@ import SkillsSection from "./sections/SkillsSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 import NierFooter from "./NierFooter"; // Import our new footer component
-import NierSystemInfo from "./NierSystemInfo"; // Import the system info component
+// import NierSystemInfo from "./NierSystemInfo"; // Import the system info component
 import portfolioData from "../../data/portfolioData";
 import "../../styles/NintendoSwitch.css";
 
@@ -145,7 +145,7 @@ const NintendoSwitchPortfolio = () => {
       </div>
 
       {/* Add the NieR-style system info component */}
-      <NierSystemInfo />
+      {/* <NierSystemInfo /> */}
 
       {/* Add the NieR-style footer */}
       <NierFooter />
