@@ -13,6 +13,9 @@ const NavBar = ({
   const activeButtonRef = useRef(null);
   const location = useLocation();
 
+  // Determine if we're on the home page
+  const isHomePage = !selectedSection || currentPath === "/";
+
   // Scroll to active button when section changes
   useEffect(() => {
     if (selectedSection && navRef.current && activeButtonRef.current) {
@@ -91,7 +94,14 @@ const NavBar = ({
                       : ""
                   }`}
                   style={{
-                    color: section.color,
+                    color:
+                      selectedSection && selectedSection.id === section.id
+                        ? "white"
+                        : undefined,
+                    backgroundColor:
+                      selectedSection && selectedSection.id === section.id
+                        ? section.color
+                        : undefined,
                   }}
                   aria-label={`Go to ${section.title}`}
                   aria-current={
@@ -116,21 +126,23 @@ const NavBar = ({
               ))}
             </div>
 
-            {/* Home button in the middle */}
-            <Link to="/" className="home-button" aria-label="Home">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-            </Link>
+            {/* Home button in the middle - ONLY shown when not on home page */}
+            {!isHomePage && (
+              <Link to="/" className="home-button" aria-label="Home">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </Link>
+            )}
 
             {/* Second half of sections */}
             <div className="navbar-navigation-half">
@@ -149,7 +161,14 @@ const NavBar = ({
                       : ""
                   }`}
                   style={{
-                    color: section.color,
+                    color:
+                      selectedSection && selectedSection.id === section.id
+                        ? "white"
+                        : undefined,
+                    backgroundColor:
+                      selectedSection && selectedSection.id === section.id
+                        ? section.color
+                        : undefined,
                   }}
                   aria-label={`Go to ${section.title}`}
                   aria-current={
@@ -175,20 +194,8 @@ const NavBar = ({
             </div>
           </div>
         ) : (
-          <Link to="/" className="home-button" aria-label="Home">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-          </Link>
+          // When on home page, don't show the home button
+          <div></div>
         )}
       </div>
 

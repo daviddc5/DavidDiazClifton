@@ -1,0 +1,106 @@
+/* Theme & Navbar Fixes 
+ * This CSS updates the navbar and button colors for better contrast
+ * in both light and dark modes, and improves accessibility.
+ */
+
+/* Light mode navbar - use background color instead of dark */
+.nav-bar {
+  background-color: var(--switch-bg); /* Match site background */
+  color: var(--switch-text); /* Default text color */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+}
+
+/* Dark mode navbar */
+[data-theme="dark"] .nav-bar {
+  background-color: #0a0a0a; /* Very dark gray/black */
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation buttons - default state light mode */
+.navbar-nav-button {
+  color: var(--switch-text); /* Black in light mode */
+}
+
+/* Navigation buttons - dark mode */
+[data-theme="dark"] .navbar-nav-button {
+  color: #ffffff; /* White in dark mode */
+}
+
+/* Active navigation button - both modes */
+.navbar-nav-button.active {
+  color: white !important; /* Ensure white text when active */
+  font-weight: 500;
+}
+
+/* Navigation icon background - improved contrast */
+.navbar-nav-icon {
+  background-color: rgba(0, 0, 0, 0.05); /* Subtle background in light mode */
+}
+
+[data-theme="dark"] .navbar-nav-icon {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Subtle background in dark mode */
+}
+
+/* Active navigation icon - ensure it uses section color */
+.navbar-nav-button.active .navbar-nav-icon {
+  opacity: 0.9;
+}
+
+/* Improve home button visibility */
+.home-button {
+  background-color: rgba(0, 0, 0, 0.1); /* More visible in light mode */
+  color: var(--switch-text);
+}
+
+[data-theme="dark"] .home-button {
+  background-color: rgba(255, 255, 255, 0.15); /* More visible in dark mode */
+  color: white;
+}
+
+/* Hide home button when it's redundant (added class will be applied via JS) */
+.home-button.hidden {
+  display: none;
+}
+
+/* Improve hover effects for better feedback */
+.navbar-nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .navbar-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Section indicator styling improvement */
+.section-indicator {
+  font-weight: 500;
+  color: var(--switch-text);
+}
+
+[data-theme="dark"] .section-indicator {
+  color: white;
+}
+
+/* Fix theme toggle button colors */
+.theme-toggle {
+  color: var(--switch-text); /* Use default text color */
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: white;
+}
+
+/* Ensure hover states are consistent */
+.theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Light mode hover */
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Dark mode hover */
+}
