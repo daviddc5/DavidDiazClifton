@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import NintendoSwitchPortfolio from "./components/NintendoSwitch/NintendoSwitchPortfolio";
-import IntroAnimation from "./components/Animation/IntroAnimation";
+
 import "./App.css";
 // Import NieR Automata theme
 import "./styles/NierAutomataTheme.css";
@@ -42,11 +42,7 @@ const PortfolioWrapper = () => {
 
   return (
     <>
-      {showIntro ? (
-        <IntroAnimation onEnter={handleEnterPortfolio} />
-      ) : (
-        <NintendoSwitchPortfolio />
-      )}
+      <NintendoSwitchPortfolio></NintendoSwitchPortfolio>
     </>
   );
 };
