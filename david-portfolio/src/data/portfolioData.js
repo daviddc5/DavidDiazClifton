@@ -50,7 +50,7 @@ const sections = [
 ];
 // Content for each section
 const profile = {
-  text: "I'm a Full Stack Developer who enjoys crafting intuitive user experiences alongside building robust systems and architectures.I'm drawn to JavaScript and Python for their versatility, and have incorporated AI capabilities to enhance user experiences and decision-making.",
+  text: "I'm a Full Stack Developer who enjoys crafting intuitive user experiences alongside building robust systems and architectures.\n\n I'm drawn to JavaScript and Python for their versatility, and have incorporated AI capabilities to enhance user experiences and decision-making.",
 };
 const experience = {
   jobs: [
@@ -61,10 +61,11 @@ const experience = {
       techStack:
         "Vue3 · Vue2 · NodeJS · React · MongoDB · Firebase · Redis · Google Cloud Platform",
       bullets: [
-        "Contributed to web and mobile apps for the care home industry, serving 50,000 users.",
-        "Redeveloped an entertainment system enhancing resident well-being through interactive activities.",
-        "Developed a learning management system (LMS) for staff training and certification tracking.",
-        "Collaborated with stakeholders in Agile development cycles to deliver user-centered solutions.",
+        "Contributed to web/mobile apps for the care home industry serving 50,000 users using React, Vue3, TypeScript, and NodeJS backends.",
+        "Integrated AI capabilities for resident care analytics and personalized content delivery systems.",
+
+        "Created an LMS supporting staff training, e-learning, and certification tracking.",
+        "Collaborated with stakeholders using Agile methodologies to deliver user-centered solutions and refine architecture.",
       ],
     },
     {
