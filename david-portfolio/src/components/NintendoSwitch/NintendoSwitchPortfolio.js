@@ -1,5 +1,6 @@
 // Import the custom CSS file first
 import "../../styles/NierEnhancedBorders.css";
+import "../../styles/PrevNextNavigation.css"; // Import our new navigation styles
 
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
@@ -14,9 +15,10 @@ import SkillsSection from "./sections/SkillsSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 import NierFooter from "./NierFooter"; // Import our footer component
+import PrevNextNavigation from "./PrevNextNavigation"; // Import our new navigation component
 import portfolioData from "../../data/portfolioData";
 import "../../styles/NintendoSwitch.css";
-import "../../styles/ResponsiveMenu.css"; // Import new responsive menu styles
+import "../../styles/ResponsiveMenu.css"; // Import responsive menu styles
 
 const NintendoSwitchPortfolio = () => {
   const navigate = useNavigate();
@@ -122,6 +124,14 @@ const NintendoSwitchPortfolio = () => {
               element={<ContactSection data={portfolioData.contact} />}
             />
           </Routes>
+
+          {/* Add the PrevNextNavigation component when a section is selected */}
+          {selectedSection && (
+            <PrevNextNavigation
+              sections={portfolioData.sections}
+              currentSectionId={selectedSection.id}
+            />
+          )}
         </div>
       </div>
 

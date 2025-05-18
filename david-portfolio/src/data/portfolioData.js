@@ -35,17 +35,18 @@ const sections = [
     icon: <Code size={24} />,
     color: "#D4B56A",
   },
-  {
-    id: "contact",
-    title: "Contact",
-    icon: <Contact size={24} />,
-    color: "#C27E9E",
-  },
+
   {
     id: "projects",
     title: "Projects",
     icon: <FolderKanban size={24} />,
     color: "#6A5A8C",
+  },
+  {
+    id: "contact",
+    title: "Contact",
+    icon: <Contact size={24} />,
+    color: "#C27E9E",
   },
 ];
 // Content for each section

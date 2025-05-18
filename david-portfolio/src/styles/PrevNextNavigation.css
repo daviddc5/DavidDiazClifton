@@ -1,0 +1,220 @@
+/* PrevNextNavigation Styles
+ * This file contains styles for the previous/next navigation buttons
+ * with NieR:Automata theme integration and responsive design
+ */
+
+/* Main container */
+.prev-next-navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto 30px;
+  padding: 0 20px;
+  gap: 15px;
+}
+
+/* Button base styling */
+.nav-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--nier-card-bg);
+  border: 1px solid var(--nier-border);
+  color: var(--nier-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  max-width: 200px;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--nier-shadow);
+}
+
+/* Button placeholder */
+.nav-button-placeholder {
+  flex: 1;
+  max-width: 200px;
+}
+
+/* Add NieR style corner effect with animation */
+.nav-button::before,
+.nav-button::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--nier-accent);
+  border-style: solid;
+  transition: all 0.3s ease;
+  animation: cornerPulse 3s infinite alternate;
+}
+
+.nav-button::before {
+  top: 3px;
+  left: 3px;
+  border-width: 1px 0 0 1px;
+}
+
+.nav-button::after {
+  bottom: 3px;
+  right: 3px;
+  border-width: 0 1px 1px 0;
+}
+
+/* Hover styles */
+.nav-button:hover {
+  background-color: var(--nier-selection);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--nier-shadow);
+}
+
+.nav-button:hover::before,
+.nav-button:hover::after {
+  width: 10px;
+  height: 10px;
+}
+
+/* Active/pressed state */
+.nav-button:active {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--nier-shadow);
+}
+
+/* Button content layout */
+.nav-button-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.next-button .nav-button-content {
+  text-align: right;
+}
+
+/* Direction text (Previous/Next) */
+.nav-direction {
+  font-size: 12px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Page name text */
+.nav-page-name {
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Previous button specific styles */
+.prev-button {
+  margin-right: auto;
+}
+
+/* Next button specific styles */
+.next-button {
+  margin-left: auto;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .nav-button {
+  background-color: var(--nier-card-bg-dark);
+  border-color: var(--nier-border);
+}
+
+[data-theme="dark"] .nav-button:hover {
+  background-color: var(--nier-selection);
+}
+
+/* Animation effect */
+.nav-button {
+  animation: fadeSlideIn 0.4s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Corner pulse animation */
+@keyframes cornerPulse {
+  0% {
+    opacity: 0.5;
+    border-color: var(--nier-accent);
+  }
+  100% {
+    opacity: 1;
+    border-color: var(--nier-border);
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .prev-next-navigation {
+    padding: 0 15px;
+    margin: 15px auto 25px;
+  }
+
+  .nav-button {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .nav-direction {
+    font-size: 10px;
+  }
+
+  .nav-page-name {
+    font-size: 14px;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .prev-next-navigation {
+    padding: 0 10px;
+    margin: 10px auto 20px;
+  }
+
+  .nav-button {
+    padding: 8px 12px;
+    max-width: 130px;
+    min-height: 45px; /* Ensure touch target is big enough */
+  }
+
+  .nav-button-placeholder {
+    max-width: 130px;
+  }
+
+  .nav-direction {
+    display: none; /* Hide "Previous"/"Next" text on very small screens */
+  }
+
+  .nav-page-name {
+    font-size: 12px;
+  }
+
+  /* Make icons smaller on very small screens */
+  .nav-button svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px; /* Prevent icon from shrinking */
+  }
+
+  /* Ensure text doesn't overflow */
+  .nav-button-content {
+    max-width: 85px;
+    overflow: hidden;
+  }
+}
