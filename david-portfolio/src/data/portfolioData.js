@@ -50,9 +50,8 @@ const sections = [
 ];
 // Content for each section
 const profile = {
-  text: "I'm a Full Stack Developer with a frontend emphasis, passionate about creating intuitive user experiences and seamless interfaces. At the same time, I deeply enjoy backend development—designing robust systems and scalable architectures—and continue to expand my expertise in that area. I'm especially drawn to JavaScript and Python for their versatility across the stack.",
+  text: "I'm a Full Stack Developer who enjoys crafting intuitive user experiences alongside building robust systems and architectures.I'm drawn to JavaScript and Python for their versatility, and have incorporated AI capabilities to enhance user experiences and decision-making.",
 };
-
 const experience = {
   jobs: [
     {
