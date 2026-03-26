@@ -1,68 +1,47 @@
 import React from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { Github, ExternalLink, Star, GitFork } from "lucide-react";
 import SectionHeader from "../../shared/SectionHeader";
 import Card from "../../shared/Card";
 
-const ProjectsSection = ({ data }) => {
+const ProjectsSection = () => {
   return (
     <div className="section-content projects-section">
       <SectionHeader title="Projects" />
 
-      <div className="projects-grid">
-        {data.projects.map((project, index) => (
-          <Card
-            key={index}
-            className="project-card"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <div className="project-content">
-              <h1 className="project-title">{project.title}</h1>
-              <p className="project-description">{project.description}</p>
-
-              <div className="project-tech">
-                {project.tech.map((tech, idx) => (
-                  <span key={idx} className="tech-tag">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <br />
-              <div className="project-image-container">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project-image"
-                />
-              </div>
-
-              <div className="project-links">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    <Github size={16} />
-                    <span>Code</span>
-                  </a>
-                )}
-
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    <ExternalLink size={16} />
-                    <span>Live</span>
-                  </a>
-                )}
-              </div>
+      <div className="github-showcase">
+        <Card className="github-showcase-card">
+          <div className="github-showcase-content">
+            <div className="github-showcase-icon">
+              <Github size={56} />
             </div>
-          </Card>
-        ))}
+            <h2 className="github-showcase-title">My Projects on GitHub</h2>
+            <a
+              href="https://github.com/daviddc5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-showcase-btn"
+            >
+              <Github size={18} />
+              <span>github.com/daviddc5</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+
+          <div className="github-stats">
+            <div className="github-stat-item">
+              <Star size={16} />
+              <span>Open Source</span>
+            </div>
+            <div className="github-stat-item">
+              <GitFork size={16} />
+              <span>Active Projects</span>
+            </div>
+            <div className="github-stat-item">
+              <Github size={16} />
+              <span>daviddc5</span>
+            </div>
+          </div>
+        </Card>
       </div>
     </div>
   );

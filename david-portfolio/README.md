@@ -1,8 +1,60 @@
-# Getting Started with Create React App
+# David Diaz Clifton – Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🌐 **Live site:** [daviddiazclifton.com](https://daviddiazclifton.com)
 
-## Available Scripts
+A personal portfolio website built with React, styled with a Nintendo Switch–inspired UI and NieR: Automata theme.
+
+---
+
+## About Me
+
+I'm a **Fullstack Software Engineer** based in London, UK, passionate about building intuitive user experiences and robust systems. Currently working at **Person Centred Software Ltd** as a Software Engineer II.
+
+Skilled in **Vue.js, Flutter, React, Node.js, MongoDB, Firebase, and Google Cloud Platform**.
+
+Fluent in English and Spanish.
+
+---
+
+## Features
+
+- 🎮 Nintendo Switch–inspired navigation and layout
+- 🌗 Light / Dark mode toggle
+- 📱 Responsive design
+- 🚀 Animated intro sequence
+- 📂 Sections: Profile, Experience, Education, Skills, Projects, Contact
+
+---
+
+## Tech Stack
+
+- **React** (Create React App)
+- **Lucide React** for icons
+- Custom CSS with CSS variables for theming
+
+---
+
+## GitHub
+
+Browse my projects: [github.com/daviddc5](https://github.com/daviddc5)
+
+---
+
+## Run Locally
+
+```bash
+npm install
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Build
+
+```bash
+npm run build
+```
+
 
 In the project directory, you can run:
 

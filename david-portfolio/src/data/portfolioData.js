@@ -56,15 +56,27 @@ const profile = {
 const experience = {
   jobs: [
     {
+      company: "Person Centred Software Ltd",
+      role: "Software Engineer II",
+      period: "Sep 2025 – Present",
+      techStack:
+        "Flutter · Vue.js · Node.js · MongoDB · Firebase · Google Cloud Platform (GCP) · Google Cloud Run",
+      bullets: [
+        "Develop and maintain multiple web and mobile applications for staff, residents, families, and maintenance teams in care homes.",
+        "Work spans the full product lifecycle: from proposing features and ideation to implementing solutions.",
+        "Frontend development using Flutter and Vue.js, backend development with Node.js, and cloud functions on Google Cloud Run.",
+        "Integrates with MongoDB and Firebase; assists in deployments on Google Cloud Platform (GCP).",
+      ],
+    },
+    {
       company: "Vindico ICS Ltd",
       role: "Full Stack Software Developer",
-      period: "Oct 2023 – Present",
+      period: "Oct 2023 – Jul 2025",
       techStack:
         "Vue3 · Vue2 · NodeJS · React · MongoDB · Firebase · Redis · Google Cloud Platform",
       bullets: [
         "Contributed to web/mobile apps for the care home industry serving 50,000 users using React, Vue3, TypeScript, and NodeJS backends.",
         "Integrated AI capabilities for resident care analytics and personalized content delivery systems.",
-
         "Created an LMS supporting staff training, e-learning, and certification tracking.",
         "Collaborated with stakeholders using Agile methodologies to deliver user-centered solutions and refine architecture.",
       ],
@@ -182,7 +194,8 @@ const contact = {
   email: "daviddiazclifton@gmail.com",
   phone: "0739126380",
   linkedin: "www.linkedin.com/in/daviddiazclifton",
-  github: "https://github.com/VindicoDavid",
+  github: "https://github.com/daviddc5",
+  website: "https://daviddiazclifton.com",
 };
 
 const portfolioData = {
