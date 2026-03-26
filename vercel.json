@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd david-portfolio && npm install && npm run build",
+  "outputDirectory": "david-portfolio/build",
+  "installCommand": "echo 'skip root install'"
+}
