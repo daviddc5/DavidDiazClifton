@@ -425,9 +425,7 @@ body {
 
 .experience-card,
 .education-card {
-  animation: slideIn 0.3s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
+  animation: slideIn 0.3s ease-out both;
 }
 
 .job-header,
@@ -440,23 +438,24 @@ body {
 
 .job-header h3,
 .school-header h3 {
-  font-size: 28px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--switch-dark);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .job-period,
 .school-period {
-  font-size: 24px;
+  font-size: 13px;
   color: var(--secondary-text);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .job-role,
 .school-degree {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--switch-blue);
   margin-bottom: 6px;
 }

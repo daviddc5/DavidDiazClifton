@@ -82,19 +82,6 @@ const experience = {
       ],
     },
     {
-      company: "Hatless Talent",
-      role: "Trainee Full Stack Developer",
-      period: "Jul 2023 – Aug 2023",
-      techStack:
-        "React · Tailwind CSS · Bootstrap · Figma · HTML · CSS · JavaScript · Git · GitHub",
-      bullets: [
-        "Completed an intensive one-month training programme simulating a real-world development environment.",
-        "Built small applications using React, Tailwind CSS, and Bootstrap.",
-        "Designed UI/UX mockups using Figma for various applications.",
-        "Developed Eventify, an event management platform, in a team of seven using Agile principles.",
-      ],
-    },
-    {
       company:
         "Cardiff Centre for AI, Robotics and Human-Machine Systems (IROHMS)",
       role: "Software Engineer (Year in Industry)",
